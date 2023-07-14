@@ -8,7 +8,7 @@ from model.database import engine
 class Update:
 
     # Creamos una funcion que va actualizar los datos
-    def update_dictionaryt(id, word, phonemic, pronunciation, type, lesson, module, meaning):
+    def update_dictionaryt(id, word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
 
         # create a Session
@@ -24,6 +24,7 @@ class Update:
         student.update({model.database.Dictionary.lesson: lesson})
         student.update({model.database.Dictionary.module: module})
         student.update({model.database.Dictionary.meaning: meaning})
+        student.update({model.database.Dictionary.color: color})
 
         
         # Hacemos un commit en la base de datos

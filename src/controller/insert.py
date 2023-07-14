@@ -10,7 +10,7 @@ from model.database import engine
 class Insert:
 
     # Creamos una funcion que va a insertar los datos
-    def add_dictionary(word, phonemic, pronunciation, type, lesson, module, meaning):
+    def add_dictionary(word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
 
         # create a Session
@@ -18,7 +18,7 @@ class Insert:
         session = Session()
 
         # Create objects  
-        dictionary = model.database.Dictionary(word, phonemic, pronunciation, type, lesson, module, meaning)
+        dictionary = model.database.Dictionary(word, phonemic, pronunciation, type, lesson, module, meaning, color)
         session.add(dictionary)
 
         

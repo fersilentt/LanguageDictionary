@@ -31,6 +31,7 @@ class List:
         lesson = []
         module = []
         meaning = []
+        color = []
 
 
 
@@ -52,11 +53,12 @@ class List:
             lesson.append(dictionary.lesson)
             module.append(dictionary.module)
             meaning.append(dictionary.meaning)
+            color.append(dictionary.color)
 
 
         # Creamos un nuevo arreglo con la lista de arreglos obtenidos
         # para despues recorrerlos y mostrarlos en la vista
-        my_list = [(id), (word), (phonemic), (pronunciation), (type), (lesson), (module), (meaning)]
+        my_list = [(id), (word), (phonemic), (pronunciation), (type), (lesson), (module), (meaning), (color)]
           
            
         

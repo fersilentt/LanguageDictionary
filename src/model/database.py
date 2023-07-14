@@ -32,9 +32,10 @@ class Dictionary(Base):
     lesson = Column(String)
     module = Column(String)
     meaning = Column(String)
+    color = Column(String)
 
     #----------------------------------------------------------------------
-    def __init__(self, word, phonemic, pronunciation, type, lesson, module, meaning):
+    def __init__(self, word, phonemic, pronunciation, type, lesson, module, meaning, color):
         """"""
         self.word = word
         self.phonemic = phonemic
@@ -43,6 +44,7 @@ class Dictionary(Base):
         self.lesson = lesson
         self.module = module
         self.meaning = meaning
+        self.color = color
     
 
 

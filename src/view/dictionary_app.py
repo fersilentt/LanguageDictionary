@@ -347,10 +347,30 @@ class Ventana:
         # ttk.Treeview = esto permite crear una tabla o grilla desde Tkinter
         # height=10 = estas son la cantidad de filas que va a mostrar la tabla
         # columns=("Firtsname", "module") =  estas son la cantidad de columnas que va a mostrar la tabla
-        self.tree = ttk.Treeview(height=10, columns=('#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8'))
+        self.tree = ttk.Treeview(height=15, columns=('#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9'))
 
         # Ahora damos una posicion a la tabla para que se muestre
         self.tree.grid(row=4, column=0, columnspan=2)
+
+
+
+
+
+
+        # Damos los colores que va a tener cada fila, con su respectivo alias, mediante el cual
+		# va a ser llamado cada color, para cada fila
+		
+		# 'Lightgreen' = este es el alias por el cual va a ser identificada cada fila para darle el color
+		#		         respectivo
+		
+		#  background='lightgreen' = este es el color que va a tener cada fila de acuerdo a su alias
+        self.tree.tag_configure('Green', background='lightgreen')
+        self.tree.tag_configure('Orange', background='orange')
+        self.tree.tag_configure('Blue', background='dodgerblue')
+        self.tree.tag_configure('Purple', background='royalblue')
+
+
+
 
 
 
@@ -368,6 +388,8 @@ class Ventana:
         self.tree.heading('#6', text= 'Lesson', anchor=CENTER)
         self.tree.heading('#7', text= 'Module', anchor=CENTER)
         self.tree.heading('#8', text= 'Meaning', anchor=CENTER)
+        self.tree.heading('#9', text= '', anchor=CENTER)
+       
         
 
 
@@ -385,6 +407,7 @@ class Ventana:
         self.tree.column('#6', width=self.file_size_components_grid)
         self.tree.column('#7', width=self.file_size_components_grid)
         self.tree.column('#8', width=self.file_size_components_grid)
+        self.tree.column('#9', width=0, stretch=NO)
 
 
 
@@ -610,9 +633,33 @@ class Ventana:
 
 
 
+        # Creamos un OptionMenu, para seleccionar el color que va a tener cada fila
+        Label(frame, text = 'Color:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 15, column = 1)
+
+        OPTIONS = [
+        "White",
+        "Green",
+        "Orange",
+        "Blue",
+        "Purple"
+        ] #etc
+
+        
+        self.variable_color = StringVar(frame)
+        self.variable_color.set(OPTIONS[0]) # default value
+
+        # Obtenemos los datos para el OptionMenu y ejeuctamos una funcion para cambiar de color
+
+        # command=self.change_color = llamamos a esta funcion para cambiar de color del OptionMenu
+        self.color = OptionMenu(frame, self.variable_color, *OPTIONS, command=self.change_color)
+        self.color.grid(row = 15, column = 2)
+        self.color.config(width=self.file_size_components, font=("{}".format(self.file_font_type)))
+
+
+
         # Creamos un label que va a funcionar como mensaje despues de realizar una accion
         self.message_aw = Label(frame, text='', font=("{}".format(self.file_font_type), self.file_font_size), fg='red')
-        self.message_aw.grid(row=14, column=2, sticky=W+E)
+        self.message_aw.grid(row=16, column=2, sticky=W+E)
 
 
 
@@ -624,15 +671,17 @@ class Ventana:
         # sticky=W+E = esto indica que abarque todo el ancho posible de nuestra ventana, de Oeste a Este
         # meaning.get(1.0, "end-1c") = para obtener la informacion ingresada en el Text Area, es obligatorio agregar estos parametros
         Button(frame, text = 'Add', font=("{}".format(self.file_font_type), self.file_font_size), command = lambda: self.add_dictionary(
-            word.get(), phonemic.get(), pronunciation.get(), type.get(), lesson.get(), module.get(), meaning.get(1.0, "end-1c"))).grid(row = 15, column = 2, sticky=W+E)
+            word.get(), phonemic.get(), pronunciation.get(), type.get(), lesson.get(), module.get(), meaning.get(1.0, "end-1c"), self.variable_color.get())).grid(row = 17, column = 2, sticky=W+E)
         
         # Ejecutamos los eventos de la ventana
         self.add_window.mainloop()
 
+    
 
 
+    
 
-
+    
 
 
 
@@ -664,6 +713,7 @@ class Ventana:
             lesson = self.tree.item(self.tree.selection())['values'][5]
             module = self.tree.item(self.tree.selection())['values'][6]
             meaning = self.tree.item(self.tree.selection())['values'][7]
+            color = self.tree.item(self.tree.selection())['values'][8]
 
         # Mostramos un mensaje de error para que el usuario seleccione una fila de datos
         # que necesita editar
@@ -678,6 +728,8 @@ class Ventana:
         # Aqui abrimos una nueva ventana para editar los datos
         self.update_window = Toplevel()
         self.update_window.title = 'Update Dictionary'
+
+
 
 
 
@@ -746,21 +798,65 @@ class Ventana:
         meaning= Text(frame, width=self.file_size_components, height = 3, font=("{}".format(self.file_font_type), self.file_font_size))
         meaning.insert(INSERT, self.tree.item(self.tree.selection())['values'][7])
         meaning.grid(row = 13, column = 2)
+
+
+
+
+        # Creamos un OptionMenu, para seleccionar el color que va a tener cada fila
+        Label(frame, text = 'Color:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 15, column = 1)
+
         
+        OPTIONS = [
+        "White",
+        "Green",
+        "Orange",
+        "Blue",
+        "Purple"
+        ] #etc
+
+
+        # Obtenemos la posicion de valor en  nuestro arreglo de acuerdo al color que obetenemos
+        # de nuestro campo de base de datos
+        id_array = OPTIONS.index(color)
+
+
+        self.variable_color = StringVar(frame)
+
+        
+        # Aqui enviamos el id del valor del arreglo, para mostrar el color que tenemos en  nuestra fila seleccionada
+        
+        # id_array = posicion del valor del arreglo
+        self.variable_color.set(OPTIONS[id_array]) # default value
+
+
+        self.color = OptionMenu(frame, self.variable_color, *OPTIONS, command=self.change_color)
+        self.color.grid(row = 15, column = 2)
+        self.color.config(width=self.file_size_components, font=("{}".format(self.file_font_type)))
+
+        # Obtenemos el color de nuestro campo para darle el color de fondo a nuestro OptionMenu
+        self.color.config(bg=color)
+        
+        
+
+
 
 
         # Creamos un label que va a funcionar como mensaje despues de realizar una accion
         self.message_uw = Label(frame, text='', font=("{}".format(self.file_font_type), self.file_font_size), fg='red')
-        self.message_uw.grid(row=14, column=2, sticky=W+E)
+        self.message_uw.grid(row=16, column=2, sticky=W+E)
 
 
         # Creamos un boton para poder insertar los datos
         Button(frame, text = 'Update', font=("{}".format(self.file_font_type), self.file_font_size), command = lambda: self.update_dictionary(
-            id, word.get(), phonemic.get(), pronunciation.get(), type.get(), lesson.get(), module.get(), meaning.get(1.0, "end-1c"))).grid(row = 15, column = 2, sticky=W+E)
+            id, word.get(), phonemic.get(), pronunciation.get(), type.get(), lesson.get(), module.get(), meaning.get(1.0, "end-1c"), self.variable_color.get())).grid(row = 17, column = 2, sticky=W+E)
         
         # Ejecutamos los eventos de la ventana
         self.update_window.mainloop()
 
+
+
+    
+    
 
 
 
@@ -834,6 +930,7 @@ class Ventana:
             lesson = self.tree.item(self.tree.selection())['values'][5]
             module = self.tree.item(self.tree.selection())['values'][6]
             meaning = self.tree.item(self.tree.selection())['values'][7]
+            color = self.tree.item(self.tree.selection())['values'][8]
             
 
         # Mostramos un mensaje de error para que el usuario seleccione una fila de datos
@@ -922,8 +1019,42 @@ class Ventana:
         meaning.grid(row = 13, column = 2)
 
 
+        Label(frame, text = 'Color:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 15, column = 1)
+
+        
+        OPTIONS = [
+        "White",
+        "Green",
+        "Orange",
+        "Blue",
+        "Purple"
+        ] #etc
+
+
+        # Obtenemos la posicion de valor en  nuestro arreglo de acuerdo al color que obetenemos
+        # de nuestro campo de base de datos
+        id_array = OPTIONS.index(color)
+
+
+        self.variable_color = StringVar(frame)
+
+        
+        # Aqui enviamos el id del valor del arreglo, para mostrar el color que tenemos en  nuestra fila seleccionada
+        
+        # id_array = posicion del valor del arreglo
+        self.variable_color.set(OPTIONS[id_array]) # default value
+
+
+        self.color = OptionMenu(frame, self.variable_color, *OPTIONS, command=self.change_color)
+        self.color.grid(row = 15, column = 2)
+        self.color.config(width=self.file_size_components, font=("{}".format(self.file_font_type)))
+
+        # Obtenemos el color de nuestro campo para darle el color de fondo a nuestro OptionMenu
+        self.color.config(bg=color, state="disabled")
+
+
         # Creamos un boton para poder cerrar la ventana
-        Button(frame, text = 'Cerrar', font=("{}".format(self.file_font_type), self.file_font_size), command=self.view_window.destroy).grid(row = 14, column = 2, sticky=W+E)
+        Button(frame, text = 'Cerrar', font=("{}".format(self.file_font_type), self.file_font_size), command=self.view_window.destroy).grid(row = 16, column = 2, sticky=W+E)
         
         # Ejecutamos los eventos de la ventana
         self.view_window.mainloop()
@@ -957,6 +1088,7 @@ class Ventana:
             lesson = self.tree.item(self.tree.selection())['values'][5]
             module = self.tree.item(self.tree.selection())['values'][6]
             meaning = self.tree.item(self.tree.selection())['values'][7]
+            color = self.tree.item(self.tree.selection())['values'][8]
 
             # duplicado, esta variable la pasaremos para poder insertarla
             word_duplicate = word+" Duplicate"
@@ -974,7 +1106,7 @@ class Ventana:
         # src/controller/insert.py, la cual va a permitir insertar los datos
 
         # word, lesson... = estos son los valores que vamos a insertar
-        Insert.add_dictionary(word_duplicate, phonemic, pronunciation, type, lesson, module, meaning)
+        Insert.add_dictionary(word_duplicate, phonemic, pronunciation, type, lesson, module, meaning, color)
 
 
         # LLamamos al label que va a actuar commo mensaje para indicar que el registro se ha insertado
@@ -989,6 +1121,26 @@ class Ventana:
 
 
 
+
+
+
+
+    # Creamos esta funcion para cambiar de color en los OptionMenu de las ventanas de agregar y editar, cada vez que 
+    # seleccionemos un diferente color
+    def change_color(self, choice):
+
+        # Aqui obtenemos el color que se ha seleccionado en el OptionMenu
+        choice = self.variable_color.get()
+        
+        # Aqui le damos el color a nuestro OptionMenu
+        self.color.config(bg=choice)
+
+
+
+
+
+
+    
 
     
 
@@ -1028,14 +1180,27 @@ class Ventana:
 
     # Creamos una funcion para obtener la lista de productos
     def get_dictionary(self):
-        
+
         # Importamos las clases donde se va a realizar un CRUD
 
         # list = se refiere al archivo "src/list.py"
         # List = nombre de la clase que contiene "src/list.py"
         from controller.list import List
+
+        
+        
+
+
+        # Damos los estilos de colores que va a tener nuetro "Treeview", para que se muestren las
+		# filas con su respectivo color
+        self.style = ttk.Style()
+        self.style.map("Treeview", foreground=self.fixed_map("foreground"), background=self.fixed_map("background"))
     
         
+
+
+
+
         # Obtenemos todos los elementos de la tabla, con la finalidad de realizar
         # una limpieza de la tabla, en el caso que exista algun dato
 
@@ -1080,8 +1245,8 @@ class Ventana:
 
         # LLenamos los datos obtenidos de la consulta en la tabla
 
-        # a,b,c,d = variables que almacenan los datos obtenidos de nuestra consulta
-        for id, word, phonemic, pronunciation, type, lesson, module, meaning  in zip(*lista): 
+        # id, word, phonemic, pronunciation, type... = variables que almacenan los datos obtenidos de nuestra consulta
+        for id, word, phonemic, pronunciation, type, lesson, module, meaning, color  in zip(*lista): 
 
             # Insertamos los datos de nuestra conulta en la tabla
 
@@ -1095,7 +1260,12 @@ class Ventana:
 
             # values = row[2] = aqui le indicamos que la posicion 2 de la consulta, inserte en la 
             #                   tabla como valor, aqui otenemos el precio del producto
-            self.tree.insert('', 0, text = self.i, values = (id, word, phonemic, pronunciation, type, lesson, module, meaning))
+
+            # tags=(color,) = aqui damos el alias para mostrar el color, por cada fila
+
+            # color = este dato no se va a visualizar en el Treeview unicamente se lo va a usar para obtener el alias
+            #         y de esta manera mostrar el color por cada fila
+            self.tree.insert('', 0, text = self.i, values = (id, word, phonemic, pronunciation, type, lesson, module, meaning, color), tags=(color,))
 
             # Incrementamos el contador creado anteriormente
             self.i = self.i + 1
@@ -1110,7 +1280,7 @@ class Ventana:
    
     # Creamos una funcion que va a llamar a la funcion de insercion de los datos
     # ubicada en src/insert.py
-    def add_dictionary(self, word, phonemic, pronunciation, type, lesson, module, meaning):
+    def add_dictionary(self, word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
         from controller.insert import Insert
 
@@ -1120,11 +1290,12 @@ class Ventana:
         # validation_add_window() = esta funcion como primer valor va a retornar un true, caso contrario un false
         if self.validation_add_window(word, phonemic, pronunciation, type, lesson, module, meaning):
 
+
             # Llamamos a la funcion add_dictionary(), de la clase Insert, ubicada en el archivo
             # src/controller/insert.py, la cual va a permitir insertar los datos
 
             # word, lesson... = estos son los valores que vamos a insertar
-            Insert.add_dictionary(word, phonemic, pronunciation, type, lesson, module, meaning)
+            Insert.add_dictionary(word, phonemic, pronunciation, type, lesson, module, meaning, color)
 
             # Cerramos la ventana una vez que se actualicen los datos
             self.add_window.destroy()
@@ -1158,7 +1329,7 @@ class Ventana:
 
     # Creamos una funcion que va a llamar a la funcion de actualizacion de los datos
     # ubicada en src/update.py
-    def update_dictionary(self, id, word, phonemic, pronunciation, type, lesson, module, meaning):
+    def update_dictionary(self, id, word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
         from controller.update import Update
 
@@ -1173,7 +1344,7 @@ class Ventana:
 
             # word, lesson... = estos son los valores que vamos a insertar
 
-            Update.update_dictionaryt(id, word, phonemic, pronunciation, type, lesson, module, meaning)
+            Update.update_dictionaryt(id, word, phonemic, pronunciation, type, lesson, module, meaning, color)
 
             # Cerramos la ventana una vez que se actualicen los datos
             self.update_window.destroy()
@@ -1894,8 +2065,6 @@ class Ventana:
                 # Si existe la base de datos creamos una variable donde va a almacenar la ruta de base de datos
                 self.path_database['text'] = route_open_database
 
-                
-            
             
         else:
 
@@ -1908,6 +2077,27 @@ class Ventana:
             # Si no existe la base de datos creamos una variable donde va a almacenar un mensaje que no existe 
             # ruta guardada la base de datos
             self.path_database['text'] = "No saved database path exists"
+
+
+
+
+
+
+
+
+
+    # Creamos esta funcion que permite agregar color a las diferentes filas del "Treeview" o lista de datos, ademas,
+    # permite mostrar la fila que hemos seleccionado con el mouese cambiando de color, la agregamos al final ya que
+    # por alguna razon causa conflictos con las otras funciones si se la pone en la parte de arriba
+    def fixed_map(self, option):
+	    return [elm for elm in self.style.map("Treeview", query_opt=option) if elm[:2] != ("!disabled", "!selected")]
+
+
+
+    
+
+
+
 
 
 
