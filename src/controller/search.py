@@ -31,6 +31,7 @@ class Search:
         lesson = []
         module = []
         meaning = []
+        color = []
 
         
 
@@ -61,12 +62,13 @@ class Search:
             lesson.append(student.lesson)
             module.append(student.module)
             meaning.append(student.meaning)
+            color.append(student.color)
 
         
         
         # Creamos un nuevo arreglo con la lista de arreglos obtenidos
         # para despues recorrerlos y mostrarlos en la vista
-        my_list = [(id), (word), (phonemic), (pronunciation), (type), (lesson), (module), (meaning)]
+        my_list = [(id), (word), (phonemic), (pronunciation), (type), (lesson), (module), (meaning), (color)]
 
 
 

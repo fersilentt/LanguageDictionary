@@ -263,6 +263,8 @@ class Ventana:
         self.img_view= PhotoImage(file=os.path.abspath("src/static/view.png"))
         self.img_duplicate_data= PhotoImage(file=os.path.abspath("src/static/duplicate-data.png"))
         self.img_refresh= PhotoImage(file=os.path.abspath("src/static/refresh.png"))
+        self.img_order_number= PhotoImage(file=os.path.abspath("src/static/order-number.png"))
+        self.img_order_word= PhotoImage(file=os.path.abspath("src/static/order-word.png"))
         
        
 
@@ -296,6 +298,8 @@ class Ventana:
         ttk.Button(frame, image=self.img_view, command=self.view_window).grid(row=0, column=3, sticky = W)
         ttk.Button(frame, image=self.img_duplicate_data, command=self.duplicate_data).grid(row=0, column=4, sticky = W)
         ttk.Button(frame, image=self.img_refresh, command=self.validation_database_options).grid(row=0, column=5, sticky = W)
+        ttk.Button(frame, image=self.img_order_number, command=self.get_dictionary).grid(row=0, column=6, sticky = W)
+        ttk.Button(frame, image=self.img_order_word, command=self.get_dictionary_order_word).grid(row=0, column=7, sticky = W)
         
         
 
@@ -305,10 +309,10 @@ class Ventana:
 
         # Creamos un label y un campo de texto donde podremos buscar algun dato
         # que necesitemos
-        Label(frame, text = 'Search:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row=0, column=6)
+        Label(frame, text = 'Search:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row=0, column=8)
 
         entry_t = Entry(frame, font=("{}".format(self.file_font_type), self.file_font_size))
-        entry_t.grid(row=0, column=7, sticky = W+E)
+        entry_t.grid(row=0, column=9, sticky = W+E)
         entry_t.bind('<KeyRelease>', self.scankey_t)
         
 
@@ -1377,6 +1381,44 @@ class Ventana:
         self.get_dictionary()
 
 
+    
+
+
+
+
+
+
+
+
+
+    # Creamos una funcion para obtener la lista de productos ordenada de forma alfabetica descendente
+    def get_dictionary_order_word(self):
+
+        from controller.list_order_word import List
+
+
+        # Aqui aplicamos lo mismo que usamos al obtener la lista de datos
+        self.style = ttk.Style()
+        self.style.map("Treeview", foreground=self.fixed_map("foreground"), background=self.fixed_map("background"))
+    
+        records = self.tree.get_children()
+
+
+        for element in records:
+            self.tree.delete(element)
+
+
+        lista = List.list_dictionary_order_word()
+
+    
+
+        self.i = 1
+
+        for id, word, phonemic, pronunciation, type, lesson, module, meaning, color  in zip(*lista): 
+            self.tree.insert('', 0, text = self.i, values = (id, word, phonemic, pronunciation, type, lesson, module, meaning, color), tags=(color,))
+            self.i = self.i + 1
+
+
 
 
 
@@ -1393,8 +1435,12 @@ class Ventana:
 
 
         # Aqui aplicamos lo mismo que usamos al obtener la lista de datos
+        self.style = ttk.Style()
+        self.style.map("Treeview", foreground=self.fixed_map("foreground"), background=self.fixed_map("background"))
+
 
         records = self.tree.get_children()
+
 
         for element in records:
             self.tree.delete(element)
@@ -1411,9 +1457,9 @@ class Ventana:
         self.i = 1
 
 
-        for id, word, phonemic, pronunciation, type, lesson, module, meaning in zip(*lista_search): 
+        for id, word, phonemic, pronunciation, type, lesson, module, meaning, color in zip(*lista_search): 
 
-            self.tree.insert('', 0, text = self.i, values = (id, word, phonemic, pronunciation, type, lesson, module, meaning))
+            self.tree.insert('', 0, text = self.i, values = (id, word, phonemic, pronunciation, type, lesson, module, meaning, color), tags=(color,))
             self.i = self.i + 1
 
 

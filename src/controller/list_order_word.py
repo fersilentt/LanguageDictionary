@@ -11,7 +11,7 @@ from model.database import engine
 class List:
 
 
-    def list_dictionary():
+    def list_dictionary_order_word():
         
         #engine = create_engine('sqlite:///student.db', echo=True)
 
@@ -39,7 +39,7 @@ class List:
 
         # dictionary = variable que almacena los datos obtenidos de nuestra consulta 
         # desc() = aqui le indicamos que ordene la consulta en forma descendente por el campo que hemos establecido 
-        for dictionary in session.query(model.database.Dictionary).order_by(model.database.Dictionary.id.asc()):
+        for dictionary in session.query(model.database.Dictionary).order_by(model.database.Dictionary.word.desc()):
             
             # Creamos un nuevo arreglo, llenos de arreglos obtenidos de los datos
             # que vamos obteniendo del for
