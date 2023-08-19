@@ -66,7 +66,13 @@ pipenv shell
 pipenv install sqlalchemy
 ```
 
-4. Iniciamos nuestra aplicacion
+4. Instalamos el modulo de py2app
+
+```
+py2app
+```
+
+5. Iniciamos nuestra aplicacion
 
 ```
 python src/app.py
