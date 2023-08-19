@@ -1,2 +1,8 @@
-greenlet==2.0.0.post0
-SQLAlchemy==1.4.43
+altgraph==0.17.3
+applescript==2021.2.9
+greenlet==2.0.2
+macholib==1.16.2
+modulegraph==0.19.5
+py2app==0.28.6
+SQLAlchemy==2.0.20
+typing_extensions==4.7.1

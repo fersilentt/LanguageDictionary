@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 sqlalchemy = "*"
 applescript = "*"
+py2app = "*"
 
 [dev-packages]
 
