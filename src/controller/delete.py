@@ -1,19 +1,19 @@
 from sqlalchemy.orm import sessionmaker
 import model.database
 
-# Importamos la variable que conetiene la ruta de donde se creara
-# la base de datos para evitar
+# We import the variable that contains the path where the database will be 
+# created 
 from model.database import engine
 
 
 
 class Delete:
 
-    # Creamos una funcion que va actualizar los datos
+    # We create a function that will update the data
     def delete_dictionary(id):
 
         
-        # create a Session
+        # Create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
 
@@ -22,5 +22,5 @@ class Delete:
         dictionay.delete()
 
         
-        # Hacemos un commit en la base de datos
+        # We commit to the database
         session.commit()

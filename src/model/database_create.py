@@ -5,22 +5,21 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 
 
-# Abrimos el archivo .txt que contiene el directorio en donde se va a crear la 
-# base de datos
+# Open the .txt file containing the directory where the database will be created. 
 f = open('src/settings/route-c-database.txt', 'r')
 file_contents = f.read()
 f.close()
 
 
 
-# Creamos la ruta donde se va a crear la base de datos, de aqui los demas archivos
-# del CRUD heredaran la ruta
+# We create the path where the database is going to be created, from here the rest of the 
+# files CRUD files will inherit the path
 #engine = create_engine('sqlite:///dictionary-english.db', echo=True)
 engine = create_engine('sqlite:///{}/language-dictionary.db'.format(file_contents), echo=True)
 Base = declarative_base()
 
 
-# Abrimos el archivo .txt, para ingresarle la ruta de la base de datos que debe abrir
+# Open the .txt file, to enter the path to the database to be opened
 with open('src/settings/route-o-database.txt', 'w') as f:
     f.write(file_contents+"/language-dictionary.db")
 
@@ -54,5 +53,5 @@ class Dictionary(Base):
     
 
 
-# Creamos las tablas
+# We create the tables
 Base.metadata.create_all(engine)

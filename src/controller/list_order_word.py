@@ -1,14 +1,13 @@
 from sqlalchemy.orm import sessionmaker
 import model.database
 
-# Importamos la variable que conetiene la ruta de donde se creara
-# la base de datos para evitar
+# We import the variable that contains the path where the database will be 
+# created
 from model.database import engine
 
 
 
-# Creamos una clase la cual
-class List:
+class ListOrderWord:
 
 
     def list_dictionary_order_word():
@@ -16,13 +15,13 @@ class List:
         #engine = create_engine('sqlite:///student.db', echo=True)
 
 
-        # Creamos una sesion
+        # Create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
 
 
-        # Creamos arreglos vacios para almacenar la informacion que obtendremos
-        # al recorrer el for
+        # We create empty arrays to store the information that we will 
+        # get when traversing the for
         id = []
         word = []
         phonemic = []
@@ -35,16 +34,16 @@ class List:
 
 
 
-        # Recorremos el objeto donde almacena la informacion 
+        # We traverse the object where the information is stored 
 
-        # dictionary = variable que almacena los datos obtenidos de nuestra consulta 
-        # desc() = aqui le indicamos que ordene la consulta en forma descendente por el campo que hemos establecido 
+        # dictionary = variable that stores the data obtained from our query 
+        # desc() = here we tell it to sort the query in descending order by the field we have set up.
         for dictionary in session.query(model.database.Dictionary).order_by(model.database.Dictionary.word.desc()):
             
-            # Creamos un nuevo arreglo, llenos de arreglos obtenidos de los datos
-            # que vamos obteniendo del for
+            # We create a new array, filled with arrays obtained from the data
+            # we get from the for
 
-            # append = permite crear un arreglo a partir de la obtencion de datos del for
+            # append = allows you to create an array from the data obtained from the for
             id.append(dictionary.id)
             word.append(dictionary.word)
             phonemic.append(dictionary.phonemic)
@@ -56,15 +55,14 @@ class List:
             color.append(dictionary.color)
 
 
-        # Creamos un nuevo arreglo con la lista de arreglos obtenidos
-        # para despues recorrerlos y mostrarlos en la vista
+        # We create a new array with the list of arrays obtained and then scroll through them 
+        # and display them in the view.
         my_list = [(id), (word), (phonemic), (pronunciation), (type), (lesson), (module), (meaning), (color)]
           
            
         
 
-        # Retornamos el arreglo nuevo con la lista de arreglos con la finalidad
-        # de importarlo despues
+        # We return the new array with the list of arrays in order to import it later
         return my_list
     
 

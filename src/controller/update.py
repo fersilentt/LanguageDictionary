@@ -1,17 +1,17 @@
 from sqlalchemy.orm import sessionmaker
 import model.database
 
-# Importamos la variable que conetiene la ruta de donde se creara
-# la base de datos para evitar
+# We import the variable that contains the path where the database will be 
+# created
 from model.database import engine
 
 class Update:
 
-    # Creamos una funcion que va actualizar los datos
+    # We create a function that will update the data
     def update_dictionaryt(id, word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
 
-        # create a Session
+        # Create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
 
@@ -26,6 +26,5 @@ class Update:
         student.update({model.database.Dictionary.meaning: meaning})
         student.update({model.database.Dictionary.color: color})
 
-        
-        # Hacemos un commit en la base de datos
+        # We commit to the database
         session.commit()

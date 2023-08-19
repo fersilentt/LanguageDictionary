@@ -1,27 +1,27 @@
 from sqlalchemy.orm import sessionmaker
 import model.database
 
-# Importamos la variable que conetiene la ruta de donde se creara
-# la base de datos para evitar
+# We import the variable that contains the path where the database will be 
+# created 
 from model.database import engine
 
 
 class DataExists:
 
 
-    # Creamos una funcion que va la palabra para comprobar si existe
+    # We create a function that goes the word to check if it exists
 
-    # word = este va a ser el dato por el cual se va a buscar en la base de datos el
-    #        cual vamos a pasarle desde la caja de texto
+    # word = this is going to be the data for which we are going to 
+    #        search in the database the which we are going to pass it from the text box
     def data_exists_dictionary(word):
 
 
-        # create a Session
+        # Create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
 
-        # Contamos la cantidad de datos que se repiten 
+        # We count the amount of data that are repeated 
         word_count = session.query(model.database.Dictionary).filter(model.database.Dictionary.word == word).count()
         
-        # Retornamos la cantidad de datos encontrados
+        # We return the amount of data found
         return word_count

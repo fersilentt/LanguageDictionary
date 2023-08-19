@@ -1,53 +1,51 @@
-# IMPORTANDO MODULOS
+# IMPORTING MODULES
 
 
-# Importamos la biblioteca de Tkinter que permite diseñar
-# toda la interfaz
+# We import the Tkinter library that allows us to design
+# the whole interface
 
-# ttk = biblioteca de Tkinter que permite diseñar toda la interfaz
+# ttk = Tkinter library that allows to design the whole interface
 from tkinter import ttk
 
 
-# Importamos todo el modulo de Tkinter
+# Import the whole Tkinter module
 
-# tkinter = permite crear interfaces de Escritorio con Python
+# tkinter = allows to create Desktop interfaces with Python
 from tkinter import *
 
 
-# Importamos el modulo de Message Box
+# We import the Message Box module
 
-# messagebox = este modulo permite mostrar mensajes de dialogo, lo
-#              vamos a usar para eliminar los datos
+# messagebox = this module allows us to display dialog messages, we will use it to
+#              we are going to use it to delete the data
 from tkinter import messagebox
 
 
-# Importamos el modulo de Tkinter nuevamente, para poder
-# agregat el scroll a treeview
+# We import the Tkinter module again, in order to be able to
+# add the scroll to treeview
 import tkinter as tk
 
 
 
-# Importamos este modulo para obtener una ruta absoluta de
-# nuestro proyecto, para poder importar las imagenes para 
-# nuestros botones
+# We import this module to get an absolute path to our project, so we can import 
+# images for  our buttons
 import os
 
 
 
-# Importamos este modulo para poder ejecutar scripts de Python
+# We import this module to be able to execute Python scripts
 import subprocess
 
 
 
 
-# Importamos este modulo para poder abrir el archivo de base de datos
-# y el directorio donde se va a crear la base de datos
+# Import this module in order to open the database file and the directory where the 
+# database is going to be created
 from tkinter import filedialog
 
 
 
-# Importamos ñps tipos de letra de Tkinter, para despues mostrarlos
-# en un Listbox
+# We import our fonts from Tkinter, and then display them in a Listbox
 from tkinter import font
 
 
@@ -56,17 +54,16 @@ from tkinter import font
 
 
 
-# Importamos este modulo para poder inertar el path, de donde se encuentran 
-# los archivos del CRUD, de esta manera podremos importar nuestros archivos
-# independientemmente de cualquier carpeta de donde se encuentren
+# We import this module to be able to inert the path, where the CRUD files 
+# are located, in this way we will be able to import our files independently 
+# of any folder where they are located.
 import sys
 
-# os.path.abspath("src") = obtenemos la ruta absoluta del proyecto para desepues importar
-#                          los archivos
+# os.path.abspath("src") = we get the absolute path of the project and then we import the files
 file = os.path.abspath("src")
 
-# Agregamoso la ruta absoluta de nuestro proyeto, para que reconozca la ruta de importacion
-# de los archivos que realizan el CRUD
+# We add the absolute path of our project, so that it recognizes the import path. of the files that 
+# make the CRUD
 sys.path.insert(0, file)
 
 
@@ -102,39 +99,38 @@ sys.path.insert(0, file)
 class Ventana:
 
 
-    # Creamos una funcion, para crear un constructor de la clase "Ventana"
+    # We create a function, to create a constructor of the class "Window".
 
-    # self = es una referencia al instancia actual de la clase, y se utiliza para acceder
-    #        a las variables que pertenecen a la clase, podemos llámarlo como queramos, pero
-    #        tiene que ser el primer parámetro de cualquier función en la clase
+    # self = is a reference to the current instance of the class, and is used to access the variables that belong
+    #        to the class, we can call it whatever we want, but has to be the first parameter of any function in the class.
 
-    # window = parametro que espera recibir el constructor de la clase y que tendra la
-    #          iniciacion del metodo que va a arrancar la ventana
+    # window = parameter that the constructor of the class expects to receive and that will have the
+    #          initiation of the method that will start the window.
     def __init__(self, window):
 
 
 
-        # Abrimos los archivos que contienen la configuracion de la interfaz de la aplicacion 
+        # Open the files containing the configuration of the application interface
         
-        # Abrimos el archivo .txt que contiene el tipo de letra de los componentes del formulario
+        # Open the .txt file containing the font of the form components
         f_font_type = open('src/settings/font-type.txt', 'r')
         self.file_font_type = f_font_type.read()
         f_font_type.close()
 
 
-        # Abrimos el archivo .txt que contiene el tamaño de letra de los componentes del formulario
+        # We open the .txt file containing the font size of the form components
         f_font_size = open('src/settings/font-size.txt', 'r')
         self.file_font_size = f_font_size.read()
         f_font_size.close()
 
 
-        # Abrimos el archivo .txt que contiene el tamaño de los componentes del formulario
+        # We open the .txt file containing the size of the form components
         f_size_components = open('src/settings/size-components.txt', 'r')
         self.file_size_components = f_size_components.read()
         f_size_components.close()
 
 
-        # Abrimos el archivo .txt que contiene el tamaño de las cabeceras del Grid
+        # We open the .txt file containing the size of the Grid headers
         f_size_components_grid = open('src/settings/size-components-grid.txt', 'r')
         self.file_size_components_grid = f_size_components_grid.read()
         f_size_components_grid.close()
@@ -143,19 +139,18 @@ class Ventana:
 
 
 
-        # Almacenamos el parametro "window" que recibe el constructor en un propiedad llamada
+        # We store the "window" parameter received by the constructor in a property named
         # "self.wind"
 
-        # self. = primer parametro del contructor y hace referencia a la instancia actual
-        #         de la clase
+        # self. = first parameter of the constructor and refers to the current instance
+        #         of the class
 
-        # .wind = propiedad donde se va almacenar lo que reciba el parametro "window", puede
-        #         tener cualquier nombre
+        # .wind = property where the "window" parameter will be stored, it can have any name
         self.wind = window
 
 
 
-        # Añadimos un titulo a la ventana
+        # Add a title to the window
         self.wind.title('Dictionary English')
 
 
@@ -163,9 +158,9 @@ class Ventana:
 
 
 
-        # Damos una resolucion a nuestra venta con la finalidad de que todos los campos que vamos 
-        # agregando a nuestra lista entren y la ventana no se muestre en cualquier parte de la ventana,
-        # si no en el centro este metodo lo hemos usado para centrar en la pantalla
+        # We give a resolution to our sale in order that all the fields that we add to our list 
+        # enter and the window is not displayed in any part of the window, if not in the center 
+        # this method we have used it to center in the screen.
         w = self.wind.winfo_reqwidth()
         h = self.wind.winfo_reqheight()
 
@@ -184,19 +179,17 @@ class Ventana:
         
 
 
-        # Creamos un Frame que va a funcionar como contenedor y lo almacenamos en una
-        # variable para posicionarlo, este Frame lo creamos para que muestre un contorno
-        # en nuestro formulario
+        # We create a Frame that is going to work as a container and we store it in a variable to position it,
+        # this Frame we create to show an outline on our form
 
-        # self.wind = aqui indicamos donde va a estar posicionado el Frame, aqui le estamos
-        #             indicando que va a estar dentro de la ventana "window"
+        # self.wind = here we indicate where it is going to be positioned the Frame, here we are
+        #             indicating that it will be inside the window.
 
-        # text = '' = aqui le estoy indicando el titulo que va a tener
-        #             el Frame, aqui no va a tener titulo
+        # text = '' = here I'm indicating the title that the Frame will have, here it's not going to have a title.
         frame = LabelFrame(self.wind, text = '')
 
 
-        # Creamos un frame que va a contener los botones de las opciones de nuestra aplicacion
+        # We create a frame that will contain the buttons of the options of our application.
         frame01 = LabelFrame(self.wind, text = '')
 
 
@@ -209,28 +202,26 @@ class Ventana:
 
         
 
-        # Ahora posicionamoe el Frame de los botones del CRUD
+        # Now we position the Frame of the CRUD buttons
 
-        # frame = variable que almacena el Frame que anteriormente hemos creado
+        # frame = variable that stores the Frame that we have previously created
 
-        # grid = metodo que nos permite indicar en que posicion de la ventana va a estar nuestro boton
-        #        o entrada de texto, esto es una grilla invisible, que nos ayudara a colocar  nuestros
-        #        elementos de acuerdo a la posicion que queramos
+        # grid = method that allows us to indicate in which position of the window is going to be our 
+        #        button or text entry, this is an invisible grid, that will help us to place our elements 
+        #        according to the position we want to place them. elements according to the position that we want.
 
-        # row=0 = esto indica que este elemento va a estar en la fila 0 de nuestra grilla, el valor
-        #         se lo indica en pixeles
+        # row=0 = this indicates that this element will be in row 0 of our grid, the value is indicated in pixels.
 
-        # column=0 = esto indica que este elemento va a estar en la columna 0 de nuestra grilla
+        # column=0 = this indicates that this element will be in column 0 of our grid.
 
-        # columnspan=3 = esto indica cuantas columnas de nuestra grilla va abarcar nuestra ventana
-        #                es decir va a ser columnas vacias sin nada de contenido, es decir con esto vamos
-        #                a centrar el frame
+        # columnspan=3 = this indicates how many columns of our grid will cover our window, that is to say, it will 
+        #                be empty columns without any content, that is to say with this we will to center the frame
 
-        # pady=20= esto es un padding, indica un espaciado ineterno de cada elemento, para que los elementos no
-        #          se vean tan juntos, aqui le indicamos en pixeles el espaciado de arriba y abajo
+        # pady=5 = this is a padding, it indicates an internal spacing of each element, so that the elements are not 
+        #          so close together. here we indicate in pixels the spacing at the top and at the bottom of each element.
         frame.grid(row=1, column=0, columnspan=3, pady=5, sticky = W)
 
-        # Ahora posicionamos el Frame de las opciones de nuestra aplicacion
+        # Now we position the Frame of our application's options
         frame01.grid(row=0, column=0, columnspan=3, sticky = W)
 
         
@@ -243,20 +234,20 @@ class Ventana:
 
 
 
-        # Importamos las imagenes de nuestro proyecto para usarlas  como iconos en nuestros botones
+        # We import the images of our project to use them as icons in our buttons.
 
-        # Imagenes de las opciones de nuestra aplicacion
+        # Images of our application options
         self.img_open_database = PhotoImage(file=os.path.abspath("src/static/open-database.png"))
         self.img_create_database = PhotoImage(file=os.path.abspath("src/static/create-database.png"))
-        self.img_update_application = PhotoImage(file=os.path.abspath("src/static/update-application.png"))
+        #self.img_update_application = PhotoImage(file=os.path.abspath("src/static/update-application.png"))
         self.img_settings = PhotoImage(file=os.path.abspath("src/static/settings.png"))
 
 
-        # Imagenes del CRUD de nuestra aplicacion
+        # CRUD images of our application
 
-        # PhotoImage = esta funcion permite importar imagenes
-        # file = esto permite dar la ruta de donde se encuentra la imagen
-        # os.path.abspath("src/static/add.png") = obtenemos la ruta absoluta del proyecto para abrir la imagen
+        # PhotoImage = this function allows to import images.
+        # file = this allows to give the path of where the image is located
+        # os.path.abspath("src/static/add.png") = we get the absolute path of the project to open the image
         self.img_add= PhotoImage(file=os.path.abspath("src/static/add.png"))
         self.img_update= PhotoImage(file=os.path.abspath("src/static/update.png"))
         self.img_delete= PhotoImage(file=os.path.abspath("src/static/delete.png"))
@@ -272,12 +263,12 @@ class Ventana:
 
 
 
-        # Botones de la aplicacion
+        # Application buttons
 
-        # Creamos los botones que van a realizar las opciones de nuestra aplicacion
+        # We create the buttons that will perform the options of our application.
         ttk.Button(frame01, image=self.img_open_database, command=self.open_file_database).grid(row=0, column=0, sticky = W)
         ttk.Button(frame01, image=self.img_create_database, command=self.create_file_database).grid(row=0, column=1, sticky = W)
-        ttk.Button(frame01, image=self.img_update_application, command=self.update_application).grid(row=0, column=2, sticky = W)
+        #ttk.Button(frame01, image=self.img_update_application, command=self.update_application).grid(row=0, column=2, sticky = W)
         ttk.Button(frame01, image=self.img_settings, command=self.settings).grid(row=0, column=4, sticky = W)
         
         
@@ -289,9 +280,9 @@ class Ventana:
 
 
 
-        # Creamos los botones que van a realizar el CRUD
+        # We create the buttons that will perform the CRUD
 
-        # image = esta propiedad permite poner una imagen en el boton
+        # image = this property allows to put an image on the button
         ttk.Button(frame, image=self.img_add, command=self.add_window).grid(row=0, column=0, sticky = W)
         ttk.Button(frame, image=self.img_update, command=self.update_window).grid(row=0, column=1, sticky = W)
         ttk.Button(frame, image=self.img_delete, command=self.delete_window).grid(row=0, column=2, sticky = W)
@@ -307,8 +298,7 @@ class Ventana:
 
 
 
-        # Creamos un label y un campo de texto donde podremos buscar algun dato
-        # que necesitemos
+        # We create a label and a text field where we can look for any data we need we need
         Label(frame, text = 'Search:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row=0, column=8)
 
         entry_t = Entry(frame, font=("{}".format(self.file_font_type), self.file_font_size))
@@ -324,17 +314,18 @@ class Ventana:
 
 
 
-        # Creamos un label que va a funcionar como mensaje despues de realizar una accion
+        # We create a label that will function as a message after performing an action
 
-        # Creamos el label y lo almacenamos en una propiedad con el nombre de "message"
+        # We create the label and store it in a property with the name "message"
 
-        # text='' = aqui no le pasamos ningun texto ya que desde las otras funciones le vamos 
-        #           a pasar un texto propio que queramos
+        # text='' = here we don't pass any text since from the other functions we are 
+        #           going to pass a text of our own that we pass a text of our own that 
+        #           we want
 
-        # fg='green' = esto indica el color que va a tener el mensaje
+       # fg='green' = this indicates the color the message will have
         self.message = Label(text='', font=("{}".format(self.file_font_type), self.file_font_size), fg='green')
 
-        # Posicionamos el label dentro del Frame
+        # Position the label inside the Frame
         self.message.grid(row=3, column=0, columnspan=2, sticky=W+E)
 
 
@@ -343,17 +334,17 @@ class Ventana:
 
 
 
-        # Creamos una tabla para que liste los datos
+        # We create a table to list the data
 
-        # Guardamos la tabla en una propieedad de la clase
+        # We store the table in a property of the class
 
-        # .tree = nombre de la tabla que va a ser llamada en diferentes funciones
-        # ttk.Treeview = esto permite crear una tabla o grilla desde Tkinter
-        # height=10 = estas son la cantidad de filas que va a mostrar la tabla
-        # columns=("Firtsname", "module") =  estas son la cantidad de columnas que va a mostrar la tabla
+        # .tree = name of the table that is going to be called in different functions
+        # ttk.Treeview = this allows you to create a table or grid from Tkinter
+        # height=15 = these are the number of rows that the table will display
+        # columns=('#1', '#2') = these are the number of columns that the table will display
         self.tree = ttk.Treeview(height=15, columns=('#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9'))
 
-        # Ahora damos una posicion a la tabla para que se muestre
+        # Now we give a position to the table to be shown
         self.tree.grid(row=4, column=0, columnspan=2)
 
 
@@ -361,13 +352,13 @@ class Ventana:
 
 
 
-        # Damos los colores que va a tener cada fila, con su respectivo alias, mediante el cual
-		# va a ser llamado cada color, para cada fila
+        # We give the colors that each row will have, with its respective alias, by means 
+        # of which each color is going to be called, for each row
 		
-		# 'Lightgreen' = este es el alias por el cual va a ser identificada cada fila para darle el color
-		#		         respectivo
+		# 'Lightgreen' = this is the alias by which each row will be identified in order to 
+        #                give it its color
 		
-		#  background='lightgreen' = este es el color que va a tener cada fila de acuerdo a su alias
+		# background='lightgreen' = this is the color that each row will have according to its alias
         self.tree.tag_configure('Green', background='lightgreen')
         self.tree.tag_configure('Orange', background='orange')
         self.tree.tag_configure('Blue', background='dodgerblue')
@@ -378,11 +369,11 @@ class Ventana:
 
 
 
-        # Ahora agregamos encabezados a la tabla
+        # Now we add headers to the table
 
-        # '#0' = esto indica el numero de columna donde va a ir el encabezado
-        # text= 'word' = este va a ser el nombre que el encabezado va a mostrar
-        # anchor=CENTER = esto es para indicarle que el encabezado vaya centrado
+        # '#0' = this indicates the column number where the header will go
+        # text= 'word' = this will be the name that the header will display
+        # anchor=CENTER = this is to indicate that the header is to be centered
         self.tree.heading('#0', text= 'N°', anchor=CENTER) 
         self.tree.heading('#1', text= '', anchor=CENTER)
         self.tree.heading('#2', text= 'Word', anchor=CENTER)
@@ -398,11 +389,11 @@ class Ventana:
 
 
 
-        # Cambiamos el tamaño de las columnas para que no se vea tan separado
+        # We change the size of the columns so that it does not look so far apart
         self.tree.column('#0', width=40)
 
-        # stretch=NO = con esto evitamos que la columna se muestre, esta es la columna del id, y la
-        #              necesitamos para actualizar los datos
+        # stretch=NO = with this we prevent the column from being displayed, this is the id column, 
+        #              and we need it to update the data. we need it to update the data
         self.tree.column('#1', width=0, stretch=NO)
         self.tree.column('#2', width=self.file_size_components_grid)
         self.tree.column('#3', width=self.file_size_components_grid)
@@ -415,17 +406,16 @@ class Ventana:
 
 
 
-        # Creamos un estilo para cambiar el tamaño de letra de las cabeceras de las columnas de
-        # nuestra lista
+        # We create a style to change the font size of the column headers of our list
 
-        # font=(None, 10) = aqui establecemos el  tamaño de letra, en "None", ponemos el tipo de letra
+        # font=(None, 10) = here we set the font size, in "None", we set the font type
         style = ttk.Style()
         style.configure("Treeview.Heading", font=("{}".format(self.file_font_type), self.file_font_size, "bold"))
         style.configure("Treeview", font=("{}".format(self.file_font_type), self.file_font_size))
 
 
         
-        # Ahora agregamos unn scrollbar a la lista 
+        # Now we add a scrollbar to the list 
         scrollbar = ttk.Scrollbar(window, orient=tk.VERTICAL, command=self.tree.yview)
         self.tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=4, column=2, sticky='ns')
@@ -437,10 +427,10 @@ class Ventana:
 
 
 
-        # Creamos un Label para mostrar la ruta de la base de datos que hemos guardado
+        # We create a Label to show the path to the database we have saved.
         Label(text = 'Saved database path: ', font=("{}".format(self.file_font_type), 9)).grid(row=5, column=0, columnspan=2, sticky=W)
         
-        # Label que va a recibir la ruta de base de datos o un mensaje de que no existe
+        # Label that is going to receive the database path or a message that it does not exist
         self.path_database = Label(text='', font=("{}".format(self.file_font_type), 9), fg='blue')
         self.path_database.grid(row=5, column=1, sticky=W)
 
@@ -450,9 +440,10 @@ class Ventana:
 
 
 
-        # Llamammos a la funcion que permite validar las opciones de nuestra base de datos, como indicarnos el path de la
-        # base de datos, si se ha cargado la base de datos, etc, con esto evitamos que se cree la base de datos automaticamente
-        # en el caso que no exista
+        # We call the function that allows to validate the options of our database, 
+        # like indicating us the path of the database, if the database has been loaded, 
+        # etc, with this we avoid to create the database automatically in the case that 
+        # it does not exist
         self.validation_database_options()
     
 
@@ -482,36 +473,36 @@ class Ventana:
 
 
    
-    # FUNCIONES PARA MOSTRAR LAS VENTANAS
+    # FUNCTIONS TO DISPLAY WINDOWS
 
 
-    # Creamos una funcion para mostrar una ventana flotante en donde vamos a
-    # ingresar los datos
+    # We create a function to display a floating window where we are going to enter the 
+    # data
     def add_window(self):
 
-        # Aqui abrimos una nueva ventana para agergar los datos
+        # Here we open a new window to add the data.
 
-        # Creamos una ventana encima de la anterior y la almacenamos en una variable
+        # We create a window on top of the previous one and store it in a variable
 
-        # self.edit_wind = variable que va almacenar la nueva variable
-        # Toplevel() = esto crea una ventana encima de la anterior
+        # self.edit_wind = variable that will store the new variable
+        # Toplevel() = this creates a window on top of the previous one.
         self.add_window = Toplevel()
 
-        # Creamos un titulo para la nueva ventana y la almacenamos en una variable
-        self.add_window.title = 'Add Dictionary'
+        # We create a title for the new window and store it in a variable
+        #self.add_window.title = 'Add Dictionary'
 
 
 
 
-        # Evitamos que el usuario pueda maximizar la ventana y tambien bloqueamos el boton de maximizar
+        # We prevent the user from maximizing the window and also block the maximize button
         self.add_window.resizable(width=False, height=False)
 
 
 
 
-        # Damos una resolucion a nuestra venta con la finalidad de que todos los campos que vamos 
-        # agregando a nuestra lista entren y la ventana no se muestre en cualquier parte de la ventana,
-        # si no en el centro este metodo lo hemos usado para centrar en la pantalla
+        # We give a resolution to our sale in order that all the fields that we add to our list 
+        # enter and the window is not displayed in any part of the window, if not in the center 
+        # this method we have used it to center in the screen.
         w = self.add_window.winfo_reqwidth()
         h = self.add_window.winfo_reqheight()
 
@@ -526,78 +517,72 @@ class Ventana:
 
 
 
-        # Creamos un Frame que va a funcionar como contenedor y lo almacenamos en una
-        # variable para posicionarlo, este Frame lo creamos para que muestre un contorno
-        # en nuestro formulario
+        # We create a Frame that will work as a container and we store it in a variable to position it, 
+        # we create this Frame to show an outline in our form
 
-        # self.wind = aqui indicamos donde va a estar posicionado el Frame, aqui le estamos
-        #             indicando que va a estar dentro de la ventana "window"
+        # self.wind = here we indicate where the Frame is going to be positioned, here we are indicating 
+        # that it will be inside the "window" window.
 
-        # text = '' = aqui le estoy indicando el titulo que va a tener
-        #             el Frame
+        # text = '' = aqui le estoy indicando el titulo que va a tener el Frame
         frame = LabelFrame(self.add_window, text = 'Register a dictionary', font=("{}".format(self.file_font_type), self.file_font_size, "bold"))
 
 
 
 
-        # Ahora posicionamoe el Frame que hemos creado
+        # Now we position the Frame that we have created
 
-        # frame = variable que almacena el Frame que anteriormente hemos creado
+        # frame = variable that stores the Frame that we have previously created
 
-        # grid = metodo que nos permite indicar en que posicion de la ventana va a estar nuestro boton
-        #        o entrada de texto, esto es una grilla invisible, que nos ayudara a colocar  nuestros
-        #        elementos de acuerdo a la posicion que queramos
+        # grid = method that allows us to indicate in which position of the window is going to be our button 
+        #        or text input, this is an invisible grid, that will help us to place our elements according 
+        #        to the position we want
 
-        # row=0 = esto indica que este elemento va a estar en la fila 0 de nuestra grilla, el valor
-        #         se lo indica en pixeles
+        # row=0 = this indicates that this element will be in row 0 of our grid, the value is indicated in pixels
 
-        # column=0 = esto indica que este elemento va a estar en la columna 0 de nuestra grilla
+        # column=0 = this indicates that this element will be in column 0 of our grid
 
-        # columnspan=3 = esto indica cuantas columnas de nuestra grilla va abarcar nuestra ventana
-        #                es decir va a ser columnas vacias sin nada de contenido, es decir con esto vamos
-        #                a centrar el frame
+        # columnspan=3 = this indicates how many columns of our grid will cover our window, that is to say, it will 
+        #                be empty columns without any content, that is to say with this we will to center the frame
 
-        # pady=20= esto es un padding, indica un espaciado ineterno de cada elemento, para que los elementos no
-        #          se vean tan juntos, aqui le indicamos en pixeles el espaciado de arriba y abajo
+        # pady=20 = this is a padding, it indicates an internal spacing of each element, so that the elements are not 
+        #          so close together. here we indicate in pixels the spacing at the top and at the bottom of each element
         frame.grid(row=0, column=0, columnspan=3, pady=20)
 
 
 
 
 
-        # Creamos un label y una caja de texto para ingresar el nuevo "word"
+        # We create a label and a text box to enter the new "word"
 
-        # Label = permite crear un texto en la ventana
+        # Label = allows you to create a text in the window
 
-        # frame = aqui indicamos donde va a estar posicionado el Label, aqui le estamos
-        #         indicando que va a estar dentro del Frame que hemos creado anteriormente
+        # frame = here we indicate where the Label will be positioned, here we are indicating that it will be inside the Frame
+        #         we have previously created.
 
-        # text='word: ' = aqui le estoy indicando el texto del label
+        # text='word: ' = here I am indicating the text of the label
 
-        # grid() = esto permite posicionar el elemento Label(), como anteriormente se ha hecho
-        #          con el frame
+        # grid() = this allows the positioning of the Label() element, as previously done with the frame
 
-        # font() = aqui establecemos el tipo y tamaño de letra
+        # font() = here we set the font type and size
 
-        # self.file_font_type = aqui se encuentra el tipo de letra que hemos importado de nuestro archivo
-        #                       .txt, en la funcion principal de este archivo
+        # self.file_font_type = here is the font we have imported from our .txt file. .txt file, in the main function of this file.
 
-        # self.file_font_size = aqui se encuentra el tamaño de letra que hemos importado de nuestro archivo
-        #                       .txt, en la funcion principal de este archivo
+        # self.file_font_size = here is the font size that we have imported from our .txt file. .txt file, in the main function of 
+        #                       this file.
         Label(frame, text = 'Word:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 1, column = 1)
 
-        # Creamos un campo de entrada para ingresar el word
 
-        # word = aqui guardamos el campo de texto en una variable
+        # We create an input field to enter the data.
 
-        # Entry(frame) = esto representa una entrada, es decir una caja de texto donde
-        #              insertaremos los valores
+        # word = here we store the text field in a variable
 
-        # self.ffile_size_components = aqui se encuentra el tamaño de los componentes que hemos importado de nuestro archivo
-        #                              .txt, en la funcion principal de este archivo
+        # Entry(frame) = this represents an entry, that is a text box where we will insert the values
+
+        # self.file_size_components = here is the size of the components that we have imported from our file .txt file, in the main 
+        #                             function of this file
         word = Entry(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size))
 
-        # Ahora posicionamos el campo de entrada
+        # Now we position the input field
         word.grid(row = 1, column = 2)
 
         
@@ -627,17 +612,17 @@ class Ventana:
         module= Entry(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size))
         module.grid(row = 11, column = 2)
 
-        # Creamos un label y una caja de texto para ingresar el nuevo "meaning"
+        # We create a label and a text box to enter the new "meaning".
 
-        # Text = aqui en vez de crear una caja de texto normal creamos un Text Area, ya
-        #        que vamos a ingresar un texto un poco largo
+        # Text = here instead of creating a normal text box we create a Text Area, since we are going to enter a long text. we are 
+        #        going to enter a long text
         Label(frame, text = 'Meaning:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 13, column = 1)
         meaning= Text(frame, width=self.file_size_components, height = 3, font=("{}".format(self.file_font_type), self.file_font_size))
         meaning.grid(row = 13, column = 2)
 
 
 
-        # Creamos un OptionMenu, para seleccionar el color que va a tener cada fila
+        # Create an OptionMenu, to select the color that each row will have
         Label(frame, text = 'Color:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 15, column = 1)
 
         OPTIONS = [
@@ -652,32 +637,33 @@ class Ventana:
         self.variable_color = StringVar(frame)
         self.variable_color.set(OPTIONS[0]) # default value
 
-        # Obtenemos los datos para el OptionMenu y ejeuctamos una funcion para cambiar de color
+        # We obtain the data for the OptionMenu and execute a function to change the color
 
-        # command=self.change_color = llamamos a esta funcion para cambiar de color del OptionMenu
+        # command=self.change_color = we call this function to change the color of the OptionMenu
         self.color = OptionMenu(frame, self.variable_color, *OPTIONS, command=self.change_color)
         self.color.grid(row = 15, column = 2)
         self.color.config(width=self.file_size_components, font=("{}".format(self.file_font_type)))
 
 
 
-        # Creamos un label que va a funcionar como mensaje despues de realizar una accion
+        # We create a label that will function as a message after performing an action
         self.message_aw = Label(frame, text='', font=("{}".format(self.file_font_type), self.file_font_size), fg='red')
         self.message_aw.grid(row=16, column=2, sticky=W+E)
 
 
 
-        # Creamos un boton para poder insertar los datos
+        # Create a button to insert the data
 
-        # lambda = permite ejecutar una funcion en esta misma ventana
-        # add_dictionary() = funcion que va a permitir insertar los datos
-        # word.get(), lesson.get()....) = son parametros que espera recibir la funcion
-        # sticky=W+E = esto indica que abarque todo el ancho posible de nuestra ventana, de Oeste a Este
-        # meaning.get(1.0, "end-1c") = para obtener la informacion ingresada en el Text Area, es obligatorio agregar estos parametros
+        # lambda = allows to execute a function in this same window
+        # add_dictionary() = function that will allow the insertion of data
+        # word.get(), lesson.get()....) = these are parameters that the function expects to receive
+        # sticky=W+E = this indicates that it should cover the full width of our window, from West to East.
+        # meaning.get(1.0, "end-1c") = to get the information entered in the Text Area, it is mandatory to add these parameters
         Button(frame, text = 'Add', font=("{}".format(self.file_font_type), self.file_font_size), command = lambda: self.add_dictionary(
             word.get(), phonemic.get(), pronunciation.get(), type.get(), lesson.get(), module.get(), meaning.get(1.0, "end-1c"), self.variable_color.get())).grid(row = 17, column = 2, sticky=W+E)
         
-        # Ejecutamos los eventos de la ventana
+
+        # We execute the window events
         self.add_window.mainloop()
 
     
@@ -693,21 +679,18 @@ class Ventana:
 
 
 
-    # Creamos una funcion para mostrar una ventana flotante en donde vamos a
-    # editar los datos
+    # We create a function to display a floating window where we are going to edit the data
     def update_window(self):
 
-        # Realizamos una limpieza de nuestro mensaje o label, en el caso que tenga algun dato
+        # We clean up our message or label, in case it has any data
         self.message['text'] = ''
 
-        # Creamos un try-catch, para evitar errores, en el caso que el usuario no  haya
-        # seleccionado ningun dato para actualizar
+        # We create a try-catch, to avoid errors, in case the user has not selected any data. selected any data to update
 
-        # En el caso que se haya selleccionado una fila de datos, vamos a obtener los
-        # datos y los almacenamos en variables
+        # In the case that a row of data has been selected, we will obtain the data and store them in variables
 
-        # Aqui no agregamos el campo "meaning", ya que este valor va directo en el Text Area,
-        # porque es la unica manera que hemos encontrado para pasarle el valor
+        # Here we do not add the "meaning" field, as this value goes directly into the Text Area, because it is the only 
+        # way we have found to pass it the value
         try:
             id = self.tree.item(self.tree.selection())['values'][0]
             word = self.tree.item(self.tree.selection())['values'][1]
@@ -719,35 +702,21 @@ class Ventana:
             meaning = self.tree.item(self.tree.selection())['values'][7]
             color = self.tree.item(self.tree.selection())['values'][8]
 
-        # Mostramos un mensaje de error para que el usuario seleccione una fila de datos
-        # que necesita editar
+        # We display an error message for the user to select a data row that needs to be edited
         except IndexError as e:
             self.message.config(fg='orange')
             self.message['text'] = 'Please select a record'
             return
 
-       
 
-
-        # Aqui abrimos una nueva ventana para editar los datos
         self.update_window = Toplevel()
-        self.update_window.title = 'Update Dictionary'
-
-
-
-
-
-        # Evitamos que el usuario pueda maximizar la ventana y tambien bloqueamos el boton de maximizar
+        
         self.update_window.resizable(width=False, height=False)
 
 
 
-        # Damos una resolucion a nuestra venta con la finalidad de que todos los campos que vamos 
-        # agregando a nuestra lista entren y la ventana no se muestre en cualquier parte de la ventana,
-        # si no en el centro este metodo lo hemos usado para centrar en la pantalla
         w = self.update_window.winfo_reqwidth()
         h = self.update_window.winfo_reqheight()
-
 
         ws = self.update_window.winfo_screenwidth()
         hs = self.update_window.winfo_screenheight()
@@ -759,18 +728,11 @@ class Ventana:
 
 
 
-
-
-        # Creamos un Frame que va a funcionar como contenedor y lo almacenamos en una
-        # variable para posicionarlo, este Frame lo creamos para que muestre un contorno
-        # en nuestro formulario
         frame = LabelFrame(self.update_window, text = 'Update Dictionary', font=("{}".format(self.file_font_type), self.file_font_size, "bold"))
-
-        # Ahora posicionamos el Frame que hemos creado
         frame.grid(row=0, column=0, columnspan=3, pady=20)
 
 
-        # Creamos los labels y cajas de texto
+        
         Label(frame, text = 'Word:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 1, column = 1)
         word = Entry(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size), textvariable = StringVar(frame, value = word))
         word.grid(row = 1, column = 2)
@@ -795,9 +757,8 @@ class Ventana:
         module= Entry(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size), textvariable = StringVar(frame, value = module))
         module.grid(row = 11, column = 2)
        
-        # Aqui para poder insertarle un valor al Text Area usamos .insert() y le pasamos
-        # como valor todo el codigo que hubieramos usado en el try{} catch{} anterior, esto
-        # lo hacemos ya que es la unica manera en que recozca el valor dentro del Text Area
+        # Here to insert a value to the Text Area we use .insert() and pass as value all the code we used in the previous 
+        # try{} catch{}, this is the only way to get the value inside the Text Area.
         Label(frame, text = 'Meaning:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 13, column = 1)
         meaning= Text(frame, width=self.file_size_components, height = 3, font=("{}".format(self.file_font_type), self.file_font_size))
         meaning.insert(INSERT, self.tree.item(self.tree.selection())['values'][7])
@@ -805,11 +766,8 @@ class Ventana:
 
 
 
-
-        # Creamos un OptionMenu, para seleccionar el color que va a tener cada fila
         Label(frame, text = 'Color:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 15, column = 1)
 
-        
         OPTIONS = [
         "White",
         "Green",
@@ -819,17 +777,15 @@ class Ventana:
         ] #etc
 
 
-        # Obtenemos la posicion de valor en  nuestro arreglo de acuerdo al color que obetenemos
-        # de nuestro campo de base de datos
+        # We get the value position in our array according to the color we get from our database field
         id_array = OPTIONS.index(color)
-
 
         self.variable_color = StringVar(frame)
 
         
-        # Aqui enviamos el id del valor del arreglo, para mostrar el color que tenemos en  nuestra fila seleccionada
+        # Here we send the id of the array value, to show the color we have in our selected row
         
-        # id_array = posicion del valor del arreglo
+        # id_array = position of the array value
         self.variable_color.set(OPTIONS[id_array]) # default value
 
 
@@ -837,24 +793,21 @@ class Ventana:
         self.color.grid(row = 15, column = 2)
         self.color.config(width=self.file_size_components, font=("{}".format(self.file_font_type)))
 
-        # Obtenemos el color de nuestro campo para darle el color de fondo a nuestro OptionMenu
+        # We get the color of our field to give the background color to our OptionMenu.
         self.color.config(bg=color)
         
         
 
 
 
-
-        # Creamos un label que va a funcionar como mensaje despues de realizar una accion
         self.message_uw = Label(frame, text='', font=("{}".format(self.file_font_type), self.file_font_size), fg='red')
         self.message_uw.grid(row=16, column=2, sticky=W+E)
 
 
-        # Creamos un boton para poder insertar los datos
         Button(frame, text = 'Update', font=("{}".format(self.file_font_type), self.file_font_size), command = lambda: self.update_dictionary(
             id, word.get(), phonemic.get(), pronunciation.get(), type.get(), lesson.get(), module.get(), meaning.get(1.0, "end-1c"), self.variable_color.get())).grid(row = 17, column = 2, sticky=W+E)
         
-        # Ejecutamos los eventos de la ventana
+
         self.update_window.mainloop()
 
 
@@ -868,17 +821,11 @@ class Ventana:
 
 
 
-    # Creamos una funcion para mostrar un mensaje en donde vamos a
-    # eliminar los datos
+    # We create a function to display a message where we are going to delete the data
     def delete_window(self):
-
-
-
-        # Realizamos una limpieza de nuestro mensaje o label, en el caso que tenga algun dato
+        
         self.message['text'] = ''
 
-        # Creamos un try-catch, para evitar errores, en el caso que el usuario no  haya
-        # seleccionado ningun dato para actualizar
         try:
             id = self.tree.item(self.tree.selection())['values'][0]
           
@@ -889,17 +836,17 @@ class Ventana:
 
 
 
-        # Mostramos un mensaje de dialogo, para decidir si eliminamos o no los datos
+        # We show a dialog message, to decide whether or not to delete the data
         res = messagebox.askquestion('Delete Dictionary', 'Do you want to delete this data?')
         
         if res == 'yes' :
 
-            # Ejecutamos la funcion para eliminar los datos pasandole el id
+            # We execute the function to delete the data passing the id to it
             self.delete_dictionary(id)
 
             messagebox.OK
 
-            # LLamamos al label que va a actuar commo mensaje
+            # We call the label that is going to act as message
             self.message.config(fg='green')
             self.message['text'] = 'Dictionary deleted successfully'
             
@@ -914,18 +861,12 @@ class Ventana:
 
 
 
-    # Creamos una funcion para mostrar una ventana flotante en donde vamos a
-    # mostrar los datos
+    # We create a function to display the data
     def view_window(self):
 
-        # Realizamos una limpieza de nuestro mensaje o label, en el caso que tenga algun dato
         self.message['text'] = ''
 
-        # Creamos un try-catch, para evitar errores, en el caso que el usuario no  haya
-        # seleccionado ningun dato para actualizar
 
-        # En el caso que se haya selleccionado una fila de datos, vamos a obtener los
-        # datos y los almacenamos en variables
         try:
             word = self.tree.item(self.tree.selection())['values'][1]
             phonemic = self.tree.item(self.tree.selection())['values'][2]
@@ -936,36 +877,21 @@ class Ventana:
             meaning = self.tree.item(self.tree.selection())['values'][7]
             color = self.tree.item(self.tree.selection())['values'][8]
             
-
-        # Mostramos un mensaje de error para que el usuario seleccione una fila de datos
-        # que necesita editar
         except IndexError as e:
             self.message.config(fg='orange')
             self.message['text'] = 'Please select a record'
             return
 
-
-
-
-        # Aqui abrimos una nueva ventana para editar los datos
+       
         self.view_window = Toplevel()
-        self.view_window.title = 'View Dictionary'
+        
 
-
-
-
-        # Evitamos que el usuario pueda maximizar la ventana y tambien bloqueamos el boton de maximizar
         self.view_window.resizable(width=False, height=False)
 
 
 
-
-        # Damos una resolucion a nuestra venta con la finalidad de que todos los campos que vamos 
-        # agregando a nuestra lista entren y la ventana no se muestre en cualquier parte de la ventana,
-        # si no en el centro este metodo lo hemos usado para centrar en la pantalla
         w = self.view_window.winfo_reqwidth()
         h = self.view_window.winfo_reqheight()
-
 
         ws = self.view_window.winfo_screenwidth()
         hs = self.view_window.winfo_screenheight()
@@ -977,18 +903,10 @@ class Ventana:
 
 
 
-
-
-        # Creamos un Frame que va a funcionar como contenedor y lo almacenamos en una
-        # variable para posicionarlo, este Frame lo creamos para que muestre un contorno
-        # en nuestro formulario
         frame = LabelFrame(self.view_window, text = 'View dictionary', font=("{}".format(self.file_font_type), self.file_font_size, "bold"))
-
-        # Ahora posicionamos el Frame que hemos creado
         frame.grid(row=0, column=0, columnspan=3, pady=20)
 
 
-        # Creamos los labels y cajas de texto
         Label(frame, text = 'Word:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 1, column = 1)
         word = Entry(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size), state = 'readonly', textvariable = StringVar(frame, value = word))
         word.grid(row = 1, column = 2)
@@ -1013,9 +931,6 @@ class Ventana:
         module= Entry(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size), state = 'readonly', textvariable = StringVar(frame, value = module))
         module.grid(row = 11, column = 2)
        
-        # En este campo de Text Area lo ponemos disabled, para inabilitra su edicion
-
-        # insert(1.0) = lo ponemos de esta manera para que no se vea tan opaco el texto
         Label(frame, text = 'Meaning:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 13, column = 1)
         meaning= Text(frame, width=self.file_size_components, font=("{}".format(self.file_font_type), self.file_font_size), height = 3)
         meaning.insert(1.0, self.tree.item(self.tree.selection())['values'][7])
@@ -1024,7 +939,6 @@ class Ventana:
 
 
         Label(frame, text = 'Color:', font=("{}".format(self.file_font_type), self.file_font_size)).grid(row = 15, column = 1)
-
         
         OPTIONS = [
         "White",
@@ -1034,33 +948,20 @@ class Ventana:
         "Purple"
         ] #etc
 
-
-        # Obtenemos la posicion de valor en  nuestro arreglo de acuerdo al color que obetenemos
-        # de nuestro campo de base de datos
         id_array = OPTIONS.index(color)
-
-
         self.variable_color = StringVar(frame)
-
-        
-        # Aqui enviamos el id del valor del arreglo, para mostrar el color que tenemos en  nuestra fila seleccionada
-        
-        # id_array = posicion del valor del arreglo
-        self.variable_color.set(OPTIONS[id_array]) # default value
-
+        self.variable_color.set(OPTIONS[id_array]) 
 
         self.color = OptionMenu(frame, self.variable_color, *OPTIONS, command=self.change_color)
         self.color.grid(row = 15, column = 2)
         self.color.config(width=self.file_size_components, font=("{}".format(self.file_font_type)))
 
-        # Obtenemos el color de nuestro campo para darle el color de fondo a nuestro OptionMenu
         self.color.config(bg=color, state="disabled")
 
 
-        # Creamos un boton para poder cerrar la ventana
         Button(frame, text = 'Cerrar', font=("{}".format(self.file_font_type), self.file_font_size), command=self.view_window.destroy).grid(row = 16, column = 2, sticky=W+E)
         
-        # Ejecutamos los eventos de la ventana
+        
         self.view_window.mainloop()
 
 
@@ -1070,20 +971,13 @@ class Ventana:
 
 
 
-    # Creamos una funcion para duplicar el registro que necesitemos
+    # We create a function to duplicate the record we need
     def duplicate_data(self):
 
         from controller.insert import Insert
 
-
-        # Realizamos una limpieza de nuestro mensaje o label, en el caso que tenga algun dato
         self.message['text'] = ''
 
-        # Creamos un try-catch, para evitar errores, en el caso que el usuario no  haya
-        # seleccionado ningun dato para actualizar
-
-        # En el caso que se haya selleccionado una fila de datos, vamos a obtener los
-        # datos y los almacenamos en variables
         try:
             word = self.tree.item(self.tree.selection())['values'][1]
             phonemic = self.tree.item(self.tree.selection())['values'][2]
@@ -1094,32 +988,20 @@ class Ventana:
             meaning = self.tree.item(self.tree.selection())['values'][7]
             color = self.tree.item(self.tree.selection())['values'][8]
 
-            # duplicado, esta variable la pasaremos para poder insertarla
+            # word_duplicate = this variable will be passed in order to insert it
             word_duplicate = word+" Duplicate"
             
-
-        # Mostramos un mensaje de error para que el usuario seleccione una fila de datos
-        # que necesita editar
         except IndexError as e:
             self.message.config(fg='orange')
             self.message['text'] = 'Please select a record'
             return
 
-        
-        # Llamamos a la funcion add_dictionary(), de la clase Insert, ubicada en el archivo
-        # src/controller/insert.py, la cual va a permitir insertar los datos
-
-        # word, lesson... = estos son los valores que vamos a insertar
+        # We apply the same as in the "add_dictionary() function
         Insert.add_dictionary(word_duplicate, phonemic, pronunciation, type, lesson, module, meaning, color)
 
-
-        # LLamamos al label que va a actuar commo mensaje para indicar que el registro se ha insertado
         self.message.config(fg='green')
         self.message['text'] = 'Data successfully duplicated'
 
-
-        # LLamamos a la funcion get_dictionary(), para que se actualicen los datos despues que
-        # ingresemos
         self.get_dictionary()
 
 
@@ -1129,14 +1011,14 @@ class Ventana:
 
 
 
-    # Creamos esta funcion para cambiar de color en los OptionMenu de las ventanas de agregar y editar, cada vez que 
-    # seleccionemos un diferente color
+    # We create this function to change the color of the OptionMenu in the add and edit windows, each time we select a 
+    # different color 
     def change_color(self, choice):
 
-        # Aqui obtenemos el color que se ha seleccionado en el OptionMenu
+        # Here we get the color that has been selected in the OptionMenu.
         choice = self.variable_color.get()
         
-        # Aqui le damos el color a nuestro OptionMenu
+        # Here we give the color to our OptionMenu
         self.color.config(bg=choice)
 
 
@@ -1178,25 +1060,25 @@ class Ventana:
 
 
 
-    # FUNCIONES PARA REALIZAR EL CRUD 
+    # FUNCTIONS TO PERFORM THE CRUD
 
 
 
-    # Creamos una funcion para obtener la lista de productos
+    # We create a function to obtain the list of data
     def get_dictionary(self):
 
-        # Importamos las clases donde se va a realizar un CRUD
+        # We import the classes where a CRUD is going to be made.
 
-        # list = se refiere al archivo "src/list.py"
-        # List = nombre de la clase que contiene "src/list.py"
+        # list = refers to the file "src/controller/list.py".
+        # list = name of the class that contains "src/controller/list.py"
         from controller.list import List
 
         
         
 
 
-        # Damos los estilos de colores que va a tener nuetro "Treeview", para que se muestren las
-		# filas con su respectivo color
+        # We give the color styles that our "Treeview" will have, so that the rows are shown with their respective 
+        # color
         self.style = ttk.Style()
         self.style.map("Treeview", foreground=self.fixed_map("foreground"), background=self.fixed_map("background"))
     
@@ -1205,26 +1087,26 @@ class Ventana:
 
 
 
-        # Obtenemos todos los elementos de la tabla, con la finalidad de realizar
-        # una limpieza de la tabla, en el caso que exista algun dato
+        # We obtain all the elements of the table, with the purpose of performing cleaning of the table, in case there 
+        # is any data in the table.
 
-        # .tree = nombre de la tabal que hemos creado anteriormente
-        # get_children() = este metodo permite obtener los datos de la tabla
+        # .tree = name of the table we have created previously
+        # get_children() = this method allows to get the data of the table
         records = self.tree.get_children()
 
 
 
 
 
-        # Recorremos los elementos de la tabla para poder limpiarlos
+        # We go through the elements of the table in order to clean them.
 
-        # Medinte un loop o for recorremos los elementos
+        # By means of a loop or for we go through the elements
 
-        # element = variable que va a eliminar cada elemento de la tabla
+        # element = variable that will delete each element in the table
         for element in records:
-            # Eliminamos cada elemento de la tabla
+            # We remove each element from the table
 
-            # delete() = metodo que permite eliminar elementos de la tabla
+            # delete() = method for deleting elements from the table
             self.tree.delete(element)
 
         
@@ -1232,46 +1114,42 @@ class Ventana:
 
 
 
-        # LLamamos a la funcion list_word(), que va a traer la lista de
-        # estudiantes de la base de datos
+        # We call the following function, which will fetch the list of data from the database
         lista = List.list_dictionary()
 
     
 
 
 
-        # Creamos un contador y lo iniciamos, con la finalidad de saber la cantidad de datos
-        # que tenemos registrados
+        # We create a counter and start it, with the purpose of knowing the amount of data we have registered
         self.i = 1
 
        
         
 
-        # LLenamos los datos obtenidos de la consulta en la tabla
+        # We fill the data obtained from the query into the table
 
-        # id, word, phonemic, pronunciation, type... = variables que almacenan los datos obtenidos de nuestra consulta
+        # id, word, phonemic, pronunciation, type... = variables storing the data obtained from our query
         for id, word, phonemic, pronunciation, type, lesson, module, meaning, color  in zip(*lista): 
 
-            # Insertamos los datos de nuestra conulta en la tabla
+            # We insert the data of our query in the table.
 
             # insert() = este metodo permirte insertar valores dentro de la tabla
 
-            # '', 0 = aqui le indicamos que la posicion 0 de la consulta, no inserte ningun valor
-            #         en la tabla
+            # '', 0 = here we indicate that position 0 of the query, do not insert any value in the table in the table
 
-            # text = self.i = aqui le indicamos que el contador lo inserte en la posicion 0 de la 
-            #                 tabla como texto
+            # text = self.i = here we tell it to insert the counter in position 0 of the table as text
 
-            # values = row[2] = aqui le indicamos que la posicion 2 de la consulta, inserte en la 
-            #                   tabla como valor, aqui otenemos el precio del producto
+            # values = row[2] = here we indicate that the position 2 of the query, insert in the table as a value, here 
+            #                   we have the price of the product
 
-            # tags=(color,) = aqui damos el alias para mostrar el color, por cada fila
+            # tags=(color,) = here we give the alias to show the color, for each row
 
-            # color = este dato no se va a visualizar en el Treeview unicamente se lo va a usar para obtener el alias
-            #         y de esta manera mostrar el color por cada fila
+            # color = this data will not be displayed in the Treeview, it will only be used to obtain the alias and thus 
+            #         display the color for each row.
             self.tree.insert('', 0, text = self.i, values = (id, word, phonemic, pronunciation, type, lesson, module, meaning, color), tags=(color,))
 
-            # Incrementamos el contador creado anteriormente
+           # We increment the counter created above
             self.i = self.i + 1
 
 
@@ -1282,43 +1160,39 @@ class Ventana:
 
 
    
-    # Creamos una funcion que va a llamar a la funcion de insercion de los datos
-    # ubicada en src/insert.py
+    # We create a function that will insert the data
     def add_dictionary(self, word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
         from controller.insert import Insert
 
-        # LLamamos a la funcion de validacion_add_window(), para comprobar que el usuario esta ingresando
-        # los datos en las cajas de texto
+        # We call the validation_add_window() function, to check that the user is entering the data in the text boxes
 
-        # validation_add_window() = esta funcion como primer valor va a retornar un true, caso contrario un false
+        # validation_add_window() = this function will return true as first value, otherwise false
         if self.validation_add_window(word, phonemic, pronunciation, type, lesson, module, meaning):
 
+            # We call the function add_dictionary(), of the Insert class, located in the file src/controller/insert.py, 
+            # which will allow us to insert the data
 
-            # Llamamos a la funcion add_dictionary(), de la clase Insert, ubicada en el archivo
-            # src/controller/insert.py, la cual va a permitir insertar los datos
-
-            # word, lesson... = estos son los valores que vamos a insertar
+            # word, lesson... = these are the values that we are going to insert
             Insert.add_dictionary(word, phonemic, pronunciation, type, lesson, module, meaning, color)
 
-            # Cerramos la ventana una vez que se actualicen los datos
+           # We close the window once the data is inserted.
             self.add_window.destroy()
 
 
-            # LLamamos al label que va a actuar commo mensaje para indicar que el registro se ha insertado
+            # We call the label that will act as a message to indicate that the record has been inserted
 
-            # message['text'] = llamamos a la propiedad "text" del label, para poder pasarle el mensaje que
-            #                   queremos mostrar
+            # message['text'] = we call the "text" property of the label, in order to pass it the message we want to display 
+            #                   we want to display
 
-            # {} = esto permite agregar un valor dentro del mensaje
+            # {} = this allows to add a value inside the message
 
-            # format() = permite pasarle un valor dentro de las llaves {}
+            # format() = allows you to pass a value inside the braces {}
             self.message.config(fg='green')
             self.message['text'] = 'Dictionary added successfully'
 
 
-            # LLamamos a la funcion get_dictionary(), para que se actualicen los datos despues que
-            # ingresemos
+            # we call the function get_dictionary(), so that the data is updated after we we enter
             self.get_dictionary()
         
 
@@ -1331,34 +1205,20 @@ class Ventana:
 
 
 
-    # Creamos una funcion que va a llamar a la funcion de actualizacion de los datos
-    # ubicada en src/update.py
+    # We create a function that will update the data
     def update_dictionary(self, id, word, phonemic, pronunciation, type, lesson, module, meaning, color):
 
         from controller.update import Update
 
-        # LLamamos a la funcion de validacion_update_window(), para comprobar que el usuario esta ingresando
-        # los datos en las cajas de texto
-
-        # validation_update_window() = esta funcion como primer valor va a retornar un true, caso contrario un false
         if self.validation_update_window(word, phonemic, pronunciation, type, lesson, module, meaning):
-
-            # Llamamos a la funcion update_dictionay(), de la clase Update, ubicada en el archivo
-            # src/controller/update.py, la cual va a permitir actualizar los datos
-
-            # word, lesson... = estos son los valores que vamos a insertar
 
             Update.update_dictionaryt(id, word, phonemic, pronunciation, type, lesson, module, meaning, color)
 
-            # Cerramos la ventana una vez que se actualicen los datos
             self.update_window.destroy()
 
-            # LLamamos al label que va a actuar commo mensaje
             self.message.config(fg='green')
             self.message['text'] = 'Dictionary updated successfully'
 
-            # LLamamos a la funcion get_dictionary(), para que se actualicen los datos despues que
-            # ingresemos
             self.get_dictionary()
 
     
@@ -1368,16 +1228,13 @@ class Ventana:
 
 
 
-    # Creamos una funcion que va a llamar a la funcion de eliminacion de los datos
-    # ubicada en src/controller/delete.py
+    # We create a function that will delete the data
     def delete_dictionary(self, id):
 
         from controller.delete import Delete
 
         Delete.delete_dictionary(id)
 
-        # LLamamos a la funcion get_dictionary(), para que se actualicen los datos despues que
-        # ingresemos
         self.get_dictionary()
 
 
@@ -1391,26 +1248,22 @@ class Ventana:
 
 
 
-    # Creamos una funcion para obtener la lista de productos ordenada de forma alfabetica descendente
+    # We create a function to obtain the list of products sorted in descending alphabetical order
     def get_dictionary_order_word(self):
 
-        from controller.list_order_word import List
+        from controller.list_order_word import ListOrderWord
 
-
-        # Aqui aplicamos lo mismo que usamos al obtener la lista de datos
+        # We apply the same procedure we used to obtain the list of data
         self.style = ttk.Style()
         self.style.map("Treeview", foreground=self.fixed_map("foreground"), background=self.fixed_map("background"))
     
         records = self.tree.get_children()
 
-
         for element in records:
             self.tree.delete(element)
 
+        lista = ListOrderWord.list_dictionary_order_word()
 
-        lista = List.list_dictionary_order_word()
-
-    
 
         self.i = 1
 
@@ -1428,34 +1281,28 @@ class Ventana:
 
 
    
-    # Creamos una funcion que permite buscar en la base de datos por un dato que ingresemos
+    # We create a function that allows us to search the database for a data that we enter
     def search_dictionary(self, data):
 
         from controller.search import Search
 
-
-        # Aqui aplicamos lo mismo que usamos al obtener la lista de datos
+        # We apply the same procedure we used to obtain the list of data
         self.style = ttk.Style()
         self.style.map("Treeview", foreground=self.fixed_map("foreground"), background=self.fixed_map("background"))
 
-
         records = self.tree.get_children()
-
 
         for element in records:
             self.tree.delete(element)
 
 
+        # We call the function search_word(), of the Search class, located in the file src/controller/search.py
 
-        # Llamamos a la funcion search_word(), de la clase Search, ubicada en el archivo
-        # src/controller/search.py
-
-        # data = este es el valor por el cual vamos a buscar en la base de datos
+        # data = this is the value for which we are going to search the database
         lista_search = Search.search_dictionary(data)
 
     
         self.i = 1
-
 
         for id, word, phonemic, pronunciation, type, lesson, module, meaning, color in zip(*lista_search): 
 
@@ -1467,12 +1314,10 @@ class Ventana:
 
 
 
-    # Creamos una funcion la cual va a permitir obtener el valor que ingresemos en la
-    # caja de texto de una forma rapida
+    # We create a function which will allow us to obtain the value that we enter in the text box in a quick way
     def scankey_t(self, event):
         
-        # Obtenemos el dato que ingresamos en la caja de texto
-        # en tiempo real
+        # We obtain the data we entered in the text box in real time
 
         # event.widget.get() = permite obtener el valor ingresado en la caja de texto en 
         #                      tiempo real
@@ -1481,12 +1326,10 @@ class Ventana:
         
 
 
-        # Validamos si no existe ningun valor en la caja de texto, mostraremos
-        # toda la lista de datos
+        # Validate if no value exists in the text box, we will show the whole list of data
         if val == '':
             self.get_dictionary()
-        # Caso contrario pasamos el dato que hemos ingresado en la caja de texto
-        # para que busque en la base de datos
+        # Otherwise we pass the data that we have entered in the text box to search the database
         else:
             self.search_dictionary(val)
 
@@ -1518,23 +1361,23 @@ class Ventana:
 
 
 
-    # FUNCIONES DE LAS OPCIONES DE NUESTRA APLICACION
+    # FUNCTIONS OF OUR APPLICATION OPTIONS
 
 
-    # Creamos esta funcion que va a permitir abrir el archivo de base de datos
+    # We create this function that will allow us to open the database file
     def open_file_database(self):
         
-        # Abrimos el archivo .txt que contiene la ruta de la base de datos que queremos guardar
+        # We open the .txt file containing the path to the database we want to save
         #f = open('src/settings/route-o-database.txt', 'r')
         #route_database = f.read()
         #f.close()
 
 
-        # Abrimos una ventana para buscar el archivo de base de datos
+        # We open a window to browse for the database file
         x = filedialog.askopenfilename(title = "Open File", filetypes=[('Database','*.db')])
 
 
-
+        # We perform a validation to check that the path of the database file  is not empty
         if (x==() or x==''):
 
             self.message.config(fg='orange')
@@ -1542,22 +1385,23 @@ class Ventana:
 
         else:
 
-            # Guardamos la ruta de base de datos en nuestro archivo .txt
+            # We save the database path in our .txt file
             with open('src/settings/route-o-database.txt', 'w') as f:
                 f.write(x)
         
         
            
-            # Damos un tamaño de letra al texto de nuestro cuadro de dialogo
+            # We give a font size to the text in our dialog box
             window.option_add('*Dialog.msg.font', 'Helvetica 11')
-            # Mostramos un mensaje de dialogo, para decidir si guardamos o no la ruta de la base de datos
+            # We show a dialog message, to decide whether or not to save the database path
             res = messagebox.askquestion('Do you want to save the database path?', '{}'.format(x))
             
 
+            # We validate our message
             if res == 'yes' :
 
-                # Insertamos el id 1 en nuestro archivo .txt, para indicarle que se ha guardado la ruta de 
-                # base de datos y ya no volver a buscar el archivo de base de datos
+                # We insert the id 1 in our .txt file, to indicate that it has saved the path to the 
+                # database and no longer look for the database file again
                 with open('src/settings/id-s-database.txt', 'w') as f:
                     f.write("1")
 
@@ -1565,19 +1409,18 @@ class Ventana:
                 self.message['text'] = 'Database loaded correctly'
 
 
-                # Abrimos el archivo .txt que contiene la ruta de donde se va abrir la base de datos
-                # para despues actualizar automaticamente la ruta de la base de datos que va a contener
-                # nuestr label 
+                # We open the .txt file that contains the path where the database will be opened and then 
+                # automatically update the database path that it will contain our label
                 f_route_open_database = open('src/settings/route-o-database.txt', 'r')
                 route_open_database = f_route_open_database.read()
                 f_route_open_database.close()
             
 
-                # Actualizamos la ruta de base de datos a nuestro label que va a contener el path
+                # We update the database path to our label that will contain the path
                 self.path_database['text'] = route_open_database
 
 
-                # Mostramos la lista de datos en el caso que existan
+                # We show the list of data in case they exist
                 self.get_dictionary()
 
 
@@ -1587,19 +1430,19 @@ class Ventana:
                 
             else :
 
-                # Insertamos el id 0 en nuestro archivo .txt, para indicarle que no guarde la ruta de base de
-                # datos y volver a abrirla
+                # We insert the id 0 in our .txt file, to tell it not to save the database 
+                # path and reopen it. and reopen it
                 with open('src/settings/id-s-database.txt', 'w') as f:
                     f.write("0")
 
                 self.message.config(fg='orange')
                 self.message['text'] = 'Database loaded correctly, but the path has not been saved.'
 
-                # Mostramos un mensaje que no existe ruta guardada la base de datos
+                # We display a message that there is no saved path to the database
                 self.path_database['text'] = "No saved database path exists"
 
 
-                # Mostramos la lista de datos en el caso que existan
+                # We show the list of data in case they exist
                 self.get_dictionary()
 
 
@@ -1611,9 +1454,10 @@ class Ventana:
 
 
 
-    # Creamos esta funcion que va a permitir crear el archivo de base de datos
+    # We create this function that will allow to create the database file
     def create_file_database(self):
 
+        # We open a window to search for the directory where the database will be created
         x = filedialog.askdirectory(title = "Open Directory")
 
 
@@ -1624,26 +1468,25 @@ class Ventana:
             
         else:
             
-            # Guardamos la ruta de base de datos en nuestro archivo .txt
+            # We save the database path in our .txt file
             with open('src/settings/route-c-database.txt', 'w') as f:
                 f.write(x)
 
-            # Llamamos al archivo que va a crear la base de datos
+            # We call the file that is going to create the database
             subprocess.call("python src/model/database_create.py", shell=True)
 
             self.message.config(fg='green')
             self.message['text'] = 'Database created correctly and path saved'
 
 
-            # Abrimos el archivo .txt que contiene la ruta de donde se va abrir la base de datos
-            # para despues actualizar automaticamente la ruta de la base de datos que va a contener
-            # nuestr label 
+            # We open the .txt file that contains the path where the database will be opened 
+            # and then automatically update the database path that it will contain our label
             f_route_open_database = open('src/settings/route-o-database.txt', 'r')
             route_open_database = f_route_open_database.read()
             f_route_open_database.close()
         
 
-            # Actualizamos la ruta de base de datos a nuestro label que va a contener el path
+            # We update the database path to our label that will contain the path
             self.path_database['text'] = route_open_database
             
 
@@ -1656,7 +1499,6 @@ class Ventana:
     # Creamos esta funcion que va a permitir actualizar nuestra aplicacion
     def update_application(self):
 
-        # Damos un tamaño de letra al texto de nuestro cuadro de dialogo
         window.option_add('*Dialog.msg.font', 'Helvetica 11')
         # Mostramos un mensaje de dialogo, para decidir si guardamos o no la ruta de la base de datos
         res = messagebox.askquestion(title = "Update", message = "If you update the application will the programme close?")
@@ -1687,8 +1529,8 @@ class Ventana:
 
 
 
-    # Creamos una funcion para mostrar una ventana flotante en donde vamos a
-    # mostrar los ajustes visuales de la aplicacion
+    # We create a function to show a floating window where we are going to show the visual settings 
+    # of the application
     def settings(self):
 
         
@@ -1696,14 +1538,14 @@ class Ventana:
         self.settings.title = 'Settings'
 
 
-        # Evitamos que el usuario pueda maximizar la ventana y tambien bloqueamos el boton de maximizar
+        # We prevent the user from maximizing the window and also block the maximize button
         self.settings.resizable(width=False, height=False)
 
 
 
-        # Damos una resolucion a nuestra venta con la finalidad de que todos los campos que vamos 
-        # agregando a nuestra lista entren y la ventana no se muestre en cualquier parte de la ventana,
-        # si no en el centro este metodo lo hemos usado para centrar en la pantalla
+        # We give a resolution to our sale with the purpose that all the fields that we are adding 
+        # to our list enter and the window is not shown in any part of the window, if not in the center 
+        # this method we have used it to center in the screen
         w = self.settings.winfo_reqwidth()
         h = self.settings.winfo_reqheight()
 
@@ -1720,9 +1562,8 @@ class Ventana:
 
 
 
-        # Creamos un Frame que va a funcionar como contenedor y lo almacenamos en una
-        # variable para posicionarlo, este Frame lo creamos para que muestre un contorno
-        # en nuestro formulario
+        # We create a Frame that will work as a container and we store it in a variable to position it, we 
+        # create this Frame to show an outline in our form
         frame = LabelFrame(self.settings, text = 'Settings', font=("{}".format(self.file_font_type)))
         frame.grid(row=0, column=0, columnspan=3, pady=20)
 
@@ -1730,39 +1571,30 @@ class Ventana:
 
 
 
-      
-
-        
-
-
-
-
-
-        # Creamos un label y una caja de texto para ingresar el tipo de letra
+        # We create a label and a text box to enter the font type
         Label(frame, text = 'Font type:', font=("{}".format(self.file_font_type))).grid(row = 1, column = 1)
         
-        # Creamos el ListBox y agregamos su configuracion
+        # We create the ListBox and add its configuration
         self.font_type = Listbox(frame, width=self.file_size_components, font=("{}".format(self.file_font_type)), height = 5)
         self.font_type.grid(row = 1, column = 2)
         
-        # Creamos esta configuracion para nuestro Listbox para evitar que Listbox pierda su selección 
-        # al hacer clic en otra parte del formulario
+        # We create this configuration for our Listbox to prevent Listbox from losing its selection when clicking 
+        # on another part of the form
         self.font_type.configure(exportselection=False)
 
-        # Llamamos a todos los tipos de letra de Tkinter
+        # We call all Tkinter typefaces
         fonts=list(font.families())
         fonts.sort()
 
-        # Creamos un for para recorrer la lista de todos los tipos de letras que existe
-        # en Tkinter en insertarlo en nuestro Listbox
+        # We create a for to go through the list of all the fonts that exist in Tkinter and insert it in our Listbox
         for item in fonts:
-            # Isertamos en el Listbox la lista de datos
+            # We insert in the Listbox the list of data
             self.font_type.insert(END, item)
 
         
 
 
-        # Creamos un OptionMenu, para seleccionar el porcentaje de los elementos que va a tener nuestra aplicacion
+        # We create an OptionMenu, to select the percentage of the elements that our application will have
         Label(frame, text = 'Size:', font=("{}".format(self.file_font_type))).grid(row = 3, column = 1)
 
         OPTIONS = [
@@ -1792,18 +1624,18 @@ class Ventana:
 
 
 
-        # Creamos un boton para poder insertar los datos
+        # We create a button to be able to insert the data
 
-        # lambda = permite ejecutar una funcion en esta misma ventana
-        # add_dictionary() = funcion que va a permitir insertar los datos
-        # word.get(), lesson.get()....) = son parametros que espera recibir la funcion
-        # sticky=W+E = esto indica que abarque todo el ancho posible de nuestra ventana, de Oeste a Este
-        # meaning.get(1.0, "end-1c") = para obtener la informacion ingresada en el Text Area, es obligatorio agregar estos parametros
+        # lambda = allows you to execute a function in this same window
+        # add_dictionary() = function that will allow you to insert the data
+        # word.get(), lesson.get()....) = are parameters that the function expects to receive
+        # sticky=W+E = this indicates that it should cover the entire possible width of our window, from West to East.
+        # meaning.get(1.0, "end-1c") = to obtain the information entered in the Text Area, it is mandatory to add the following parameters
         Button(frame, text = 'Apply', font=("{}".format(self.file_font_type)), 
                command = lambda: self.get_settings(self.font_type.get(self.font_type.curselection()) , self.variable.get())).grid(row = 9, column = 2, sticky=W+E)
 
         
-        # Ejecutamos los eventos de la ventana
+        # We execute the events of the window
         self.settings.mainloop()
 
     
@@ -1817,12 +1649,12 @@ class Ventana:
 
 
 
-    # Creamos una funcion que va a guradar las configuraciones del programa en archivos de texto 
+    # We create a function that will save the program configurations in text files 
     def get_settings(self, font_type, size):
 
 
-        # Realizamos una validacion del campo de size para despues usando regla de 3
-        # calcular automaticamente los pixeles que va a tener nuestra ventana
+        # We perform a validation of the size field and then using a rule of 3 automatically 
+        # calculate the pixels that our window will have
 
         if (size == "10%"):
 
@@ -1861,31 +1693,31 @@ class Ventana:
       
 
         
-        # Damos un tamaño de letra al texto de nuestro cuadro de dialogo
+        # We give a font size to the text in our dialog box
         window.option_add('*Dialog.msg.font', 'Helvetica 11')
-        # Mostramos un mensaje de dialogo, para decidir si guardamos o no la ruta de la base de datos
+        # We show a dialog message, to decide whether or not to save the database path
         res = messagebox.askquestion(title = "Apply settings", message = "The application will restart to apply the changes")
         
         
         if res == 'yes' :
 
-             # Guardamos el tipo de letra de nuestros formularios en nuestro archivo .txt
+             # We save the typeface of our forms in our .txt file
             with open('settings/font-type.txt', 'w') as f:
                 f.write(font_type)
 
-            # Guardamos el tamaño de letra de nuestros formularios en nuestro archivo .txt
+            # We save the font size of our forms in our .txt file
             with open('settings/font-size.txt', 'w') as f:
                 f.write(font_size)
 
-            # Guardamos el tamaño de los componentes de nuestros formularios en nuestro archivo .txt
+            # We save the size of the components of our forms in our .txt file
             with open('settings/size-components.txt', 'w') as f:
                 f.write(size_components)
             
-            # Guardamos el tamaño de los componentes de nuestros formularios en nuestro archivo .txt
+            # We save the size of the components of our forms in our .txt file
             with open('settings/size-component-grid.txt', 'w') as f:
                 f.write(size_components_grid)
         
-            # Cerramos la ventana
+            # Close the window
             window.destroy()
             
 
@@ -1930,21 +1762,20 @@ class Ventana:
 
 
 
-    # FUNCIONES QUE VAN A VALIDAR VALIDAR NUESTRA APLICACION
+    # FUNCTIONS THAT ARE GOING TO VALIDATE OUR APPLICATION
 
 
 
-    # Funciones de va a validar las cajas de texto
+    # Functions to validate the text boxes
 
 
-    # Creamos una funcion que va a permitir validar que las cajas de texto no esten vacias
-    # en el formulario de agregar estudiante
+    # We create a function to validate that the text boxes are not empty.
     def validation_add_window(self, word, phonemic, pronunciation, type, lesson, module, meaning):
 
-        # Llamamos al siguiente archivo y a su clase para comprobar si la palabra existe
+        # We call the following file and its class to check if the word exists
         from controller.data_exists import DataExists
 
-        # Obtenemos la cantidad de datos existentes para despues validar
+        # We obtain the amount of existing data to then validate
         word_count = DataExists.data_exists_dictionary(word)
 
 
@@ -1952,13 +1783,13 @@ class Ventana:
 
 
 
-        # Validamos que las cajas de texto no no esten vacias
+        # Validate that the text boxes are not empty
 
-        # len = metodo que permite obtener la longitud de un elemento
-        # == 0 = aqui le indicamos que la longitud del valor ingresado sea igual a 0
+        # len = method for obtaining the length of an element
+        # == 0 = here we indicate that the length of the entered value is equal to 0
         if(len(word) == 0):
 
-            # LLamamos al label que va a actuar commo mensaje para indicar que el registro se ha insertado
+            # We call the label that will act as a message to indicate that the record has been inserted
             self.message_aw['text'] = 'Word is required'
 
         elif(len(phonemic) == 0):
@@ -1985,13 +1816,13 @@ class Ventana:
 
             self.message_aw['text'] = 'Meaning is required'
         
-        # Validamos si existe mas de 1 palabra igual vamos a mostrar el siguinte mensaje, para que no vuelva
-        # a ingresar la misma palabra
+        # Validate if there is more than 1 word, we will show the following message, so that you do not enter 
+        # the same word again
         elif(word_count > 0):
 
             self.message_aw['text'] = 'This word already exists in the database'
 
-        # Caso contrario retornamos los valores de los datos para insertarlos
+        # Otherwise, we return the data values to insert them
         else:
             return word and lesson and module and meaning
 
@@ -2000,8 +1831,7 @@ class Ventana:
 
 
 
-    # Creamos una funcion que va a permitir validar que las cajas de texto no esten vacias
-    # en el formulario de actualizar estudiante
+    #  Let's create a function that will allow to validate that the text boxes are not empty in the update form
     def validation_update_window(self, word, phonemic, pronunciation, type, lesson, module, meaning):
 
 
@@ -2044,55 +1874,53 @@ class Ventana:
 
 
 
-    # Funciones que va a usar nuestra aplicacion
+    # Functions to be used by our application
 
-    # Creamos esta funcion que permite validar las opciones de nuestra base de datos, como indicarnos el path de la
-    # base de datos, si se ha cargado la base de datos etc
+    # We create this function that allows to validate the options of our database, like indicating us the 
+    # path of the database, if the database has been loaded, etc
     def validation_database_options(self):
 
-        # Validamos que exista la ruta y el archivo de base de datos
+        # Validate that the database file and path exist
 
-        # Abrimos el archivo .txt que contiene el id de si hemos o no guardado
-        # la ruta de base de datos
+        # We open the .txt file that contains the id of whether we have saved or not the database path
         f_id_save_database = open('src/settings/id-s-database.txt', 'r')
         id_save_database = f_id_save_database.read()
         f_id_save_database.close()
 
 
 
-        # Abrimos el archivo .txt que contiene la ruta de donde se va abrir la base de datos
+        # Open the .txt file containing the path where the database will be opened
         f_route_open_database = open('src/settings/route-o-database.txt', 'r')
         route_open_database = f_route_open_database.read()
         f_route_open_database.close()
 
 
 
-        # Convertimos de String a entero para que podamos validar el valor que obtenemos del .txt
-        # ya que este se obtiene en formato String
+        # We convert from String to integer so that we can validate the value that we obtain from the .txt 
+        # since it is obtained in String format
         id_save_database_var = int(id_save_database)
 
 
 
-        # Realizamos una validacion para saber si hemos o no guardado la ruta de base de datos
-        # 1 = indica que hemos decidido guardar lla ruta de base de datos
-        # 0 = indica que no hemos guardado la ruta de base de datos  
+        # We perform a validation to know whether or not we have saved the database path
+        # 1 = indicates that we have decided to save the database route
+        # 0 = indicates that we have not saved the database path  
         if id_save_database_var == 1:
 
-            # Validamos si existe el directorio y dentro de este el archivo de base de datos
+            # Validate if the directory exists and if the database file exists inside it
             database_file = os.path.exists(os.path.join("{}".format(route_open_database)))
 
 
-            # La variable anterior nos va a dar un true, si existe el directorio y el archivo de base de datos
-            # de lo contrario un false
+            # The above variable will give us a true, if the directory and the database file exists otherwise a false
             if database_file:
 
-                # Si existe, mostramos un mensaje por consola
+                # If it exists, we display a message by console
                 print("Database exists")
 
-                # Si existe la base de datos creamos una variable donde va a almacenar la ruta de base de datos
+                # If the database exists we create a variable where the database path will be stored
                 self.path_database['text'] = route_open_database
 
-                # Enviamos a nuestra variable el path o el mensaje de que la base de datos existe o no
+                # We send to our variable the path or the message that the database exists or not
                 #self.path_database['text'] = route_open_database_var
                 self.get_dictionary()
 
@@ -2100,15 +1928,15 @@ class Ventana:
                 
             else:
 
-                # Si existe, mostramos un mensaje por consola
+                # If it exists, we display a message by console
                 print("Database no exists")
                 
-                # Mostramos una mensaje de que la base de datos no existe
+                # We display a message that the database does not exist
                 self.message.config(fg='red')
                 self.message['text'] = 'No database file loaded, you must create or open a database.'
 
 
-                # Si existe la base de datos creamos una variable donde va a almacenar la ruta de base de datos
+                # If the database exists we create a variable where the database path will be stored
                 self.path_database['text'] = route_open_database
 
             
@@ -2116,12 +1944,12 @@ class Ventana:
 
             print("No saved database path exists")
 
-            # Mostramos una mensaje de que la base de datos no existe
+            # We display a message that the database does not exist
             self.message.config(fg='red')
             self.message['text'] = 'No database file loaded, you must create or open a database.'
 
-            # Si no existe la base de datos creamos una variable donde va a almacenar un mensaje que no existe 
-            # ruta guardada la base de datos
+            # If the database does not exist we create a variable where it will store a message that does 
+            # not exist saved path to the database
             self.path_database['text'] = "No saved database path exists"
 
 
@@ -2132,9 +1960,9 @@ class Ventana:
 
 
 
-    # Creamos esta funcion que permite agregar color a las diferentes filas del "Treeview" o lista de datos, ademas,
-    # permite mostrar la fila que hemos seleccionado con el mouese cambiando de color, la agregamos al final ya que
-    # por alguna razon causa conflictos con las otras funciones si se la pone en la parte de arriba
+    # We create this function that allows to add color to the different rows of the "Treeview" or list of data, 
+    # in addition, it allows to show the row that we have selected with the mouese changing color, we add it at 
+    # the end since for some reason it causes conflicts with the other functions if you put it at the top
     def fixed_map(self, option):
 	    return [elm for elm in self.style.map("Treeview", query_opt=option) if elm[:2] != ("!disabled", "!selected")]
 
@@ -2151,39 +1979,33 @@ class Ventana:
 
 
 
-# ARRANCANDO LA APLICACION
+# STARTING THE APPLICATION
 
-# Comprobamos si este archivo es con el que va arrancar nuetra aplicacion
-# para despues mostrar la ventana con interfaz grafica
+# We check if this file is the one that will start our application and then display the window with graphical interface
 if __name__ == '__main__':
 
-    # Iniciando el modulo que va arrancar la ventana y almacenandolo
-    # en una variable
+    # Initializing the module that will start the window and storing it in a variable in a variable
 
-    # Tk() = este sera el modulo con el que va a iniciar nuestra ventana y que hemos
-    #        importado inicialmente
+    # Tk() = this will be the module that will start our window and that we have imported initially imported initially
     window = Tk()
 
 
 
-    # Evitamos que el usuario pueda maximizar la ventana y tambien bloqueamos el boton de maximizar
+    # We prevent the user from maximizing the window and also block the maximize button
     window.resizable(width=False, height=False)
 
     
 
-    # Instanciamos a la clase "Product" y la almacenamos en una variable
+    # We instantiate the class and store it in a variable
 
-    # window = parametro que le pasamos a la clase "Product", la cual contendra el
-    #          arranque de la ventana
+    # window = parameter that we pass to the class, which will contain the startup of the window
     application = Ventana(window)
 
 
 
-    # Arrrancamos la ventana
+    # We start the window
 
-    # window.mainloop () = le dice a Python que ejecute el ciclo de eventos Tkinter.
-    #                      Este método detecta eventos, como clics de botones o
-    #                      pulsaciones de teclas, y bloquea la ejecución de cualquier
-    #                      código que venga después hasta que se cierra la ventana a
-    #                      la que se llama.
+    # window.mainloop () = tells Python to execute the Tkinter event loop. This method detects events, such as button 
+    #                      clicks or keystrokes, and blocks the execution of any code that comes after it until the window 
+    #                      is closed to which is called
     window.mainloop()

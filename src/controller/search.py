@@ -1,28 +1,28 @@
 from sqlalchemy.orm import sessionmaker
 import model.database
 
-# Importamos la variable que conetiene la ruta de donde se creara
-# la base de datos para evitar
+# We import the variable that contains the path where the database will be 
+# created
 from model.database import engine
 
 
 class Search:
 
 
-    # Creamos una funcion que va buscar los datos
+    # We create a function that will look for the data
 
-    # data = este va a ser el dato por el cual se va a buscar en la base de datos el
-    #        cual vamos a pasarle desde la caja de texto
+    # data = this is going to be the data for which we are going to search in 
+    #        the database the which we will pass it from the text box
     def search_dictionary(data):
 
 
-        # Creamos la sesion
+        # Create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
         
 
-        # Creamos arreglos vacios para almacenar la informacion que obtendremos
-        # al recorrer el for
+       # We create empty arrays to store the information that we will get when traversing 
+       # the for
         id = []
         word = []
         phonemic = []
@@ -35,15 +35,14 @@ class Search:
 
         
 
-        # Aqui realizamos la busquema mediante varios campos, aqui usamos un like 
-        # como en SQL , pero buscamos por varios campos usando or, como lo hariamos 
-        # en SQL
+        # Here we search by several fields, here we use a like as in SQL , but we search by 
+        # several fields using or, as we would do it in SQL
 
-        # all() = esto permite obtener toda la lista de datos que tiene similitud
-        # or_( = esto indica que la conulta va usar OR y no AND
-        # {} = esto permite agregar un valor dentro del mensaje
-        # format() = permite pasarle un valor dentro de las llaves {}
-        # data = aqui va el dato por el cual se va a buscar en la base de datos
+        # all() = this allows to get the whole list of data that have similarity
+        # or_( = this indicates that the query is going to use OR and not AND
+        # {} = this allows to add a value inside the message
+        # format() = this allows to pass a value inside the {} braces
+        # data = this is the data to be searched for in the database
         for student in session.query(model.database.Dictionary).filter(model.database.or_(
             model.database.Dictionary.word.like('%{}%'.format(data)),
             model.database.Dictionary.phonemic.like('%{}%'.format(data)),
@@ -66,12 +65,11 @@ class Search:
 
         
         
-        # Creamos un nuevo arreglo con la lista de arreglos obtenidos
-        # para despues recorrerlos y mostrarlos en la vista
+        # We create a new array with the list of arrays obtained.
+        # and then traverse and display them in the view.
         my_list = [(id), (word), (phonemic), (pronunciation), (type), (lesson), (module), (meaning), (color)]
 
 
 
-        # Retornamos el arreglo nuevo con la lista de arreglos con la finalidad
-        # de importarlo despues
+        # We return the new array with the list of arrays in order to import it later
         return my_list
