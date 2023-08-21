@@ -1,4 +1,4 @@
-<img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="50%" /> **Dictionary English**
+<img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="20%" /> **Dictionary English**
 
 **INFORMACION DEL PROYECTO**
 
