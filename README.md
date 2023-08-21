@@ -1,4 +1,4 @@
-# Dictionary English
+<img src="https://github.com/kapitainsky/RcloneBrowser/wiki/images/RcloneBrowserLongLogo1.png" width="80%" /> # Dictionary English
 
 **INFORMACION DEL PROYECTO**
 
