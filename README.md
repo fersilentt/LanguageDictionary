@@ -1,5 +1,6 @@
 # Dictionary English <img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="8%" />
 
+<h1 align="center">Dictionary English</h1>
 **INFORMACION DEL PROYECTO**
 
 * Nombre completo del proyecto: *Dictionary English*
