@@ -2,7 +2,9 @@
 
 <h1 align="center">Dictionary English</h1>
 
-<img align="center" src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="128"/>
+<p align="center">
+ <img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="8%" />
+</p>
 
 
 **INFORMACION DEL PROYECTO**
