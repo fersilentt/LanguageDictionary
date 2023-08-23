@@ -1,3 +1,20 @@
+
+
+<h1 align="center">Language Dictionary</h1>
+
+<p align="center">
+  <img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="8%" />
+</p>
+
+
+<br/>
+<br/>
+    <i>This program allows you to add words of any language as if it were a dictionary, with the purpose of being a support tool when we start learning a new language.</i>
+<br/>
+<br/>
+
+
+
 **INFORMACION DEL PROYECTO**
 
 * Nombre completo del proyecto: *Dictionary English*
@@ -66,7 +83,13 @@ pipenv shell
 pipenv install sqlalchemy
 ```
 
-4. Iniciamos nuestra aplicacion
+4. Instalamos el modulo de py2app
+
+```
+pipenv install py2app
+```
+
+5. Iniciamos nuestra aplicacion
 
 ```
 python src/app.py
