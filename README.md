@@ -9,7 +9,7 @@
 
 <br/>
 <br/>
-    <i>This program allows you to add words of any language as if it were a dictionary, with the purpose of being a support tool when we start learning a new language.</i>
+    <i>This program allows you to add words of any language as if it were a dictionary, with the purpose of being a support tool when we start earning a new language.</i>
 <br/>
 <br/>
 
