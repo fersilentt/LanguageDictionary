@@ -27,6 +27,7 @@
 
 - [IMPORTANTE](#IMPORTANTE)
 - [COMANDOS USADOS](#COMANDOS-USADOS)
+- [COMANDOS PARA CREAR EL ICONO EN MAC](#COMANDOS-PARA-CREAR-EL-ICONO-EN-MAC)
 
 ---
 
@@ -93,5 +94,19 @@ pipenv install py2app
 
 ```
 python src/app.py
+```
+
+#### COMANDOS PARA CREAR EL ICONO EN MAC
+
+1. Creamos el ejcutable para contruir nuestra aplicacion con "py2applet"
+
+```
+py2applet --make-setup LanguageDictionary.py resources/language-dictionary.icns
+```
+
+2. Construimos nuestra aplicacion, para que cree nuestro archivo .app
+
+```
+python setup.py py2app
 ```
 
