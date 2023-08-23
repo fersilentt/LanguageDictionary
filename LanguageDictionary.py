@@ -24,3 +24,8 @@ from sqlalchemy import create_engine, ForeignKey
 from sqlalchemy import Column, Date, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
+
+
+
+# Main file that will start the application
+import src.view.dictionary_app as dictionary_app
