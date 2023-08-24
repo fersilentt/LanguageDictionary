@@ -122,5 +122,7 @@ c. Copiamos la carpeta "src", en dentro de "/Contents/Resources"
 
 ## License
 
-IPATool is released under the [MIT license](https://github.com/majd/ipatool/blob/main/LICENSE).
+IPATool is released under the [MIT license](https://github.com/tarantulaman/LanguageDictionary/blob/master/LICENCE).
+
+
 
