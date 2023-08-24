@@ -27,5 +27,15 @@ from sqlalchemy.orm import relationship, backref
 
 
 
+
+
 # Main file that will start the application
-import src.view.dictionary_app as dictionary_app
+file = os.path.abspath("src")
+sys.path.insert(0, file)
+
+from src.view.dictionary_app import Ventana
+
+# We call our class and pass it the Tkinter module to load our window
+window = Tk()
+application = Ventana(window)
+window.mainloop()
