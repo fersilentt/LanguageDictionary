@@ -151,7 +151,7 @@ class Ventana:
 
 
         # Add a title to the window
-        self.wind.title('Dictionary English')
+        self.wind.title('Language Dictionary')
 
 
 
