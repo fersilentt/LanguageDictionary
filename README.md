@@ -110,3 +110,11 @@ py2applet --make-setup LanguageDictionary.py resources/language-dictionary.icns
 python setup.py py2app
 ```
 
+3. Copiamos el contenido del codigo faltante siguiendo los siguientes pasos
+
+```
+a. Entramos a la carpeta "dist"
+b. En la aplicacion creada damos clic en "Mostrar el contenido del paquete"
+c. Copiamos la carpeta "src", en dentro de "/Contents/Resources"
+```
+
