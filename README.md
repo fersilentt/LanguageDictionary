@@ -18,14 +18,9 @@
 - [License](#license)
 
 
-**INFORMACION DEL PROYECTO**
-
-* Nombre completo del proyecto: *Dictionary English*
-* Número de proyecto: *6*
-
 ---
 
-#### TABLA DE CONTENIDOS:
+#### TABLE OF CONTENTS:
 ---
 
 - [IMPORTANTE](#IMPORTANTE)
