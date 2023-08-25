@@ -14,6 +14,7 @@
 <br/>
 
 
+- [Requirements](#requirements)
 - [License](#license)
 
 
@@ -120,9 +121,13 @@ b. En la aplicacion creada damos clic en "Mostrar el contenido del paquete"
 c. Copiamos la carpeta "src", en dentro de "/Contents/Resources"
 ```
 
+## Requirements
+
+- Supported operating system (macOS)
+
 ## License
 
-IPATool is released under the [MIT license](https://github.com/tarantulaman/LanguageDictionary/blob/master/LICENCE).
+Language Dictionary is released under the [MIT license](https://github.com/tarantulaman/LanguageDictionary/blob/master/LICENCE).
 
 
 
