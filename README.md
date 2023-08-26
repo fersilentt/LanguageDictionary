@@ -122,6 +122,7 @@ c. Copiamos la carpeta "src", en dentro de "/Contents/Resources"
 ## Requirements
 
 - Supported operating system (macOS)
+- This program has been tested on Mac High Sierra 10.13
 
 ## License
 
