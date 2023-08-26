@@ -18,6 +18,7 @@
 
 
 - [Requirements](#requirements)
+- [Building](#building)
 - [License](#license)
 
 
@@ -28,6 +29,10 @@
 
 - Supported operating system (macOS)
 - This program has been tested on Mac High Sierra 10.13
+
+## Building
+
+- If we wish to build the application we can follow these steps [here](https://github.com/tarantulaman/LanguageDictionary/wiki)
 
 ## License
 
