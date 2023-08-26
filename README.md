@@ -13,7 +13,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/project-image-01.png" width="40%" />
+  <img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/project-image-01.png" width="80%" />
 </p>
 
 
