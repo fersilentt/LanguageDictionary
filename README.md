@@ -1,6 +1,6 @@
 
 
-<h1 align="center">Language Dictionary</h1>
+<h1 align="center">LanguageDictionary</h1>
 
 <p align="center">
   <img src="https://github.com/tarantulaman/LanguageDictionary/blob/master/resources/language-dictionary.png" width="8%" />
